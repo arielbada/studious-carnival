@@ -1,0 +1,2 @@
+json.extract! alumno, :id, :dni, :nombre, :apellido, :localidad_id, :domicilio, :telefono_fijo, :telefono_celular, :correo, :fecha_nacimiento, :sede_id, :inscripcion_certificado, :inscripcion_foto, :inscripcion_partida, :inscripcion_ficha, :created_at, :updated_at
+json.url alumno_url(alumno, format: :json)

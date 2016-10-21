@@ -1,0 +1,87 @@
+<%= form_for(alumno) do |f| %>
+  <% if alumno.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(alumno.errors.count, "error") %> prohibited this alumno from being saved:</h2>
+
+      <ul>
+      <% alumno.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dni %>
+    <%= f.text_field :dni %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apellido %>
+    <%= f.text_field :apellido %>
+  </div>
+
+  <div class="field">
+    <%= f.label :localidad_id %>
+    <%= f.select :localidad_id, options_for_select(Localidad.all.map{ |l| [l.localidad, l.id] }, alumno[:localidad_id]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :domicilio %>
+    <%= f.text_field :domicilio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefono_fijo %>
+    <%= f.text_field :telefono_fijo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefono_celular %>
+    <%= f.text_field :telefono_celular %>
+  </div>
+
+  <div class="field">
+    <%= f.label :correo %>
+    <%= f.text_field :correo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fecha_nacimiento %>
+    <%= f.date_select :fecha_nacimiento %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sede_id %>
+    <%= f.select :sede_id, options_for_select(Sede.all.map{ |s| [s.escuela, s.id] }, alumno[:sede_id]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :inscripcion_certificado %>
+    <%= f.check_box :inscripcion_certificado %>
+  </div>
+
+  <div class="field">
+    <%= f.label :inscripcion_foto %>
+    <%= f.check_box :inscripcion_foto %>
+  </div>
+
+  <div class="field">
+    <%= f.label :inscripcion_partida %>
+    <%= f.check_box :inscripcion_partida %>
+  </div>
+
+  <div class="field">
+    <%= f.label :inscripcion_ficha %>
+    <%= f.check_box :inscripcion_ficha %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dni:</strong>
+  <%= @alumno.dni %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @alumno.nombre %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @alumno.apellido %>
+</p>
+
+<p>
+  <strong>Localidad:</strong>
+  <%= @alumno.localidad.localidad %>
+</p>
+
+<p>
+  <strong>Domicilio:</strong>
+  <%= @alumno.domicilio %>
+</p>
+
+<p>
+  <strong>Telefono fijo:</strong>
+  <%= @alumno.telefono_fijo %>
+</p>
+
+<p>
+  <strong>Telefono celular:</strong>
+  <%= @alumno.telefono_celular %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @alumno.correo %>
+</p>
+
+<p>
+  <strong>Fecha nacimiento:</strong>
+  <%= @alumno.fecha_nacimiento %>
+</p>
+
+<p>
+  <strong>Sede:</strong>
+  <%= @alumno.sede.escuela %>
+</p>
+
+<p>
+  <strong>Inscripcion certificado:</strong>
+  <%= @alumno.inscripcion_certificado %>
+</p>
+
+<p>
+  <strong>Inscripcion foto:</strong>
+  <%= @alumno.inscripcion_foto %>
+</p>
+
+<p>
+  <strong>Inscripcion partida:</strong>
+  <%= @alumno.inscripcion_partida %>
+</p>
+
+<p>
+  <strong>Inscripcion ficha:</strong>
+  <%= @alumno.inscripcion_ficha %>
+</p>
+
+<%= link_to 'Edit', edit_alumno_path(@alumno) %> |
+<%= link_to 'Back', alumnos_path %>
