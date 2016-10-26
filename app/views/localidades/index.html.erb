@@ -7,6 +7,7 @@
       <th>Localidad</th>
       <th>Region educativa</th>
       <th>Nodo</th>
+	  <th>Departamento</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
         <td><%= localidad.localidad %></td>
         <td><%= localidad.region_educativa %></td>
         <td><%= localidad.nodo %></td>
+		<td><%= localidad.departamento %></td>
         <td><%= link_to 'Show', localidad %></td>
         <td><%= link_to 'Edit', edit_localidad_path(localidad) %></td>
         <td><%= link_to 'Destroy', localidad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
