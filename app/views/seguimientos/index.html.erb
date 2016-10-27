@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Seguimientos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Alumno</th>
+      <th>Cohorte</th>
+      <th>Modulo</th>
+      <th>Fecha acta</th>
+      <th>Aula</th>
+      <th>Estado</th>
+      <th>Calificacion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seguimientos.each do |seguimiento| %>
+      <tr>
+        <td><%= seguimiento.alumno %></td>
+        <td><%= seguimiento.cohorte %></td>
+        <td><%= seguimiento.modulo %></td>
+        <td><%= seguimiento.fecha_acta %></td>
+        <td><%= seguimiento.aula %></td>
+        <td><%= seguimiento.estado %></td>
+        <td><%= seguimiento.calificacion %></td>
+        <td><%= link_to 'Show', seguimiento, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_seguimiento_path(seguimiento), class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Destroy', seguimiento, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Seguimiento', new_seguimiento_path %>

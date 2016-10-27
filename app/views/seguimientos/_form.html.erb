@@ -1,0 +1,52 @@
+<%= form_for(seguimiento) do |f| %>
+  <% if seguimiento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(seguimiento.errors.count, "error") %> prohibited this seguimiento from being saved:</h2>
+
+      <ul>
+      <% seguimiento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :alumno_id %>
+    <%= f.select :alumno_id, options_for_select(Alumno.all.map{ |a| [a.apellido + ", " + a.nombre, a.id] }, seguimiento[:alumno_id]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cohorte %>
+    <%= f.select :cohorte, options_for_select(["C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10", "C11", "C12"]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :modulo %>
+    <%= f.select :modulo, options_for_select(["M00", "M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M13"]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fecha_acta %>
+    <%= f.date_select :fecha_acta %>
+  </div>
+
+  <div class="field">
+    <%= f.label :aula %>
+    <%= f.text_field :aula %>
+  </div>
+
+  <div class="field">
+    <%= f.label :estado %>
+    <%= f.select :estado, options_for_select(["Aprobado", "Regular", "Recursa", "Abandono"]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :calificacion %>
+    <%= f.select :calificacion, options_for_select([0, 7, 8, 9, 10]) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

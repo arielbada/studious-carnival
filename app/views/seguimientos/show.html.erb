@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Alumno:</strong>
+  <%= @seguimiento.alumno %>
+</p>
+
+<p>
+  <strong>Cohorte:</strong>
+  <%= @seguimiento.cohorte %>
+</p>
+
+<p>
+  <strong>Modulo:</strong>
+  <%= @seguimiento.modulo %>
+</p>
+
+<p>
+  <strong>Fecha acta:</strong>
+  <%= @seguimiento.fecha_acta %>
+</p>
+
+<p>
+  <strong>Aula:</strong>
+  <%= @seguimiento.aula %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @seguimiento.estado %>
+</p>
+
+<p>
+  <strong>Calificacion:</strong>
+  <%= @seguimiento.calificacion %>
+</p>
+
+<%= link_to 'Edit', edit_seguimiento_path(@seguimiento) %> |
+<%= link_to 'Back', seguimientos_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026221454) do
+ActiveRecord::Schema.define(version: 20161027051503) do
 
   create_table "alumnos", force: :cascade do |t|
     t.string   "dni"
@@ -47,6 +47,22 @@ ActiveRecord::Schema.define(version: 20161026221454) do
     t.string   "direccion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "seguimientos", force: :cascade do |t|
+    t.integer  "alumno_id"
+    t.string   "cohorte"
+    t.string   "modulo"
+    t.date     "fecha_acta"
+    t.string   "aula"
+    t.string   "estado"
+    t.integer  "calificacion"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["alumno_id"], name: "index_seguimientos_on_alumno_id"
+    t.index ["cohorte"], name: "index_seguimientos_on_cohorte"
+    t.index ["fecha_acta"], name: "index_seguimientos_on_fecha_acta"
+    t.index ["modulo"], name: "index_seguimientos_on_modulo"
   end
 
   create_table "users", force: :cascade do |t|

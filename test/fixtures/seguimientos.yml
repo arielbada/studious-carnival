@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  alumno: one
+  cohorte: MyString
+  modulo: MyString
+  fecha_acta: 2016-10-27
+  aula: MyString
+  estado: MyString
+  calificacion: 1
+
+two:
+  alumno: two
+  cohorte: MyString
+  modulo: MyString
+  fecha_acta: 2016-10-27
+  aula: MyString
+  estado: MyString
+  calificacion: 1

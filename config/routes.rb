@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :seguimientos
   devise_for :users
   resources :alumnos
   resources :localidades
