@@ -15,9 +15,9 @@
       <tr>
         <td><%= sede.escuela %></td>
         <td><%= sede.direccion %></td>
-        <td><%= link_to 'Show', sede %></td>
-        <td><%= link_to 'Edit', edit_sede_path(sede) %></td>
-        <td><%= link_to 'Destroy', sede, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', sede, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_sede_path(sede), class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Destroy', sede, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>

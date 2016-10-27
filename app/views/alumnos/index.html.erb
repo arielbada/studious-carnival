@@ -39,9 +39,9 @@
         <td><%= alumno.inscripcion_foto %></td>
         <td><%= alumno.inscripcion_partida %></td>
         <td><%= alumno.inscripcion_ficha %></td>
-        <td><%= link_to 'Show', alumno %></td>
-        <td><%= link_to 'Edit', edit_alumno_path(alumno) %></td>
-        <td><%= link_to 'Destroy', alumno, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', alumno, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_alumno_path(alumno), class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Destroy', alumno, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -49,4 +49,4 @@
 
 <br>
 
-<%= link_to 'New Alumno', new_alumno_path %>
+<%= link_to 'New Alumno', new_alumno_path, class: 'btn btn-success' %>
