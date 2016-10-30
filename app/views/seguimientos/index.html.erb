@@ -19,7 +19,7 @@
   <tbody>
     <% @seguimientos.each do |seguimiento| %>
       <tr>
-        <td><%= seguimiento.alumno %></td>
+        <td><%= seguimiento.alumno.nombre %></td>
         <td><%= seguimiento.cohorte %></td>
         <td><%= seguimiento.modulo %></td>
         <td><%= seguimiento.fecha_acta %></td>
