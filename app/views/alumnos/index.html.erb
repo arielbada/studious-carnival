@@ -1,7 +1,7 @@
 
 <h1>Alumnos</h1>
 
-<table>
+<table class="table table-condensed table-hover">
   <thead>
     <tr>
       <th>Dni</th>
@@ -14,10 +14,7 @@
       <th>Correo</th>
       <th>Fecha nacimiento</th>
       <th>Sede</th>
-      <th>Inscripcion certificado</th>
-      <th>Inscripcion foto</th>
-      <th>Inscripcion partida</th>
-      <th>Inscripcion ficha</th>
+      <th>Estado de la Inscripción</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -35,10 +32,34 @@
         <td><%= alumno.correo %></td>
         <td><%= alumno.fecha_nacimiento %></td>
         <td><%= alumno.sede.escuela %></td>
-        <td ><span class='glyphicon <%= alumno.inscripcion_certificado ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td>
-        <td><span class='glyphicon <%= alumno.inscripcion_foto ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td>
-        <td><span class='glyphicon <%= alumno.inscripcion_partida ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td>
-        <td><span class='glyphicon <%= alumno.inscripcion_ficha ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td>
+		<td>
+		  <!-- Button trigger modal -->
+			<button class="btn btn-link" data-toggle="modal" data-target="#alumno-<%= alumno.id %>">
+				<span class='glyphicon <%= alumno.inscripcion_certificado && alumno.inscripcion_foto && alumno.inscripcion_partida && alumno.inscripcion_ficha ? "glyphicon-ok" : "glyphicon-remove"  %>'/>
+			</button>
+		  <!-- Modal -->
+			<div class="modal fade" id="alumno-<%= alumno.id %>" tabindex="-1" role="dialog" aria-labelledby="alumno-<%= alumno.id %>" aria-hidden="true">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="alumno-<%= alumno.id %>">Estado de la Inscripción: <br><%= alumno.nombre %> <%= alumno.apellido %></h4>
+						</div>
+						<div class="modal-body">
+							<table class="table-condensed">
+								<tr><td>Certificado</td><td><span class='glyphicon <%= alumno.inscripcion_certificado ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
+								<tr><td>Foto</td><td><span class='glyphicon <%= alumno.inscripcion_foto ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
+								<tr><td>Partida</td><td><span class='glyphicon <%= alumno.inscripcion_partida ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
+								<tr><td>Ficha</td><td><span class='glyphicon <%= alumno.inscripcion_ficha ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<%= link_to 'Edit', edit_alumno_path(alumno), class: 'btn' %>
+							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</td>
         <td><%= link_to 'Show', alumno, class: 'btn btn-xs' %></td>
         <td><%= link_to 'Edit', edit_alumno_path(alumno), class: 'btn btn-xs' %></td>
         <td><%= link_to 'Destroy', alumno, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
