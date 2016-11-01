@@ -1,6 +1,16 @@
 
 <h1>Alumnos</h1>
 
+<%= form_tag alumnos_path, :method => 'get' do %>
+
+<%= label_tag(:nombre, "Nombre:") %>
+<%= text_field_tag :nombre, params[:nombre] %>
+<%= label_tag(:apellido, "Apellido:") %>
+<%= text_field_tag :apellido, params[:apellido] %>
+
+<%= submit_tag("Search", :name => nil) %>
+<% end %>
+
 <table class="table table-condensed table-hover">
   <thead>
     <tr>

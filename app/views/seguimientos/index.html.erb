@@ -2,7 +2,7 @@
 
 <h1>Seguimientos</h1>
 
-<table>
+<table class="table table-condensed table-hover">
   <thead>
     <tr>
       <th>Alumno</th>
@@ -19,7 +19,7 @@
   <tbody>
     <% @seguimientos.each do |seguimiento| %>
       <tr>
-        <td><%= seguimiento.alumno.nombre %></td>
+        <td><%="#{seguimiento.alumno.apellido}, #{seguimiento.alumno.nombre}" %></td>
         <td><%= seguimiento.cohorte %></td>
         <td><%= seguimiento.modulo %></td>
         <td><%= seguimiento.fecha_acta %></td>
