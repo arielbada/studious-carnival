@@ -1,16 +1,6 @@
 
 <h1>Alumnos</h1>
 
-<%= form_tag alumnos_path, :method => 'get' do %>
-
-<%= label_tag(:nombre, "Nombre:") %>
-<%= text_field_tag :nombre, params[:nombre] %>
-<%= label_tag(:apellido, "Apellido:") %>
-<%= text_field_tag :apellido, params[:apellido] %>
-
-<%= submit_tag("Search", :name => nil) %>
-<% end %>
-
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
@@ -30,6 +20,24 @@
   </thead>
 
   <tbody>
+	<tr><%= form_tag alumnos_path, :method => 'get' do %>
+		<td><%= text_field_tag :dni, params[:dni] %></td>
+		<td><%= text_field_tag :nombre, params[:nombre] %></td>
+		<td><%= text_field_tag :apellido, params[:apellido] %></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><%= submit_tag("Search", :name => nil) %></td>
+	  <% end %>
+	</tr>
+  
     <% @alumnos.each do |alumno| %>
       <tr>
         <td><%= alumno.dni %></td>

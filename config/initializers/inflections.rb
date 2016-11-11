@@ -16,5 +16,6 @@
 # end
 
 ActiveSupport::Inflector.inflections do |inflect|
- inflect.irregular 'localidad', 'localidades'
+	inflect.irregular 'localidad', 'localidades'
+	inflect.irregular 'seccion', 'secciones'
 end

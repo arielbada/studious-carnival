@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027051503) do
+ActiveRecord::Schema.define(version: 20161106191209) do
 
   create_table "alumnos", force: :cascade do |t|
     t.string   "dni"
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 20161027051503) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "departamento"
+  end
+
+  create_table "secciones", force: :cascade do |t|
+    t.string   "seccion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sedes", force: :cascade do |t|

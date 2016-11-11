@@ -1,0 +1,31 @@
+<%= form_for(seccion) do |f| %>
+  <% if seccion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(seccion.errors.count, "error") %> prohibited this seccion from being saved:</h2>
+
+      <ul>
+      <% seccion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label :modulo %>
+    <%= f.text_field :modulo %>
+  </div>
+  <div class="field">
+    <%= f.label :cohorte %>
+    <%= f.text_field :cohorte %>
+  </div>
+  <div class="field">
+    <%= f.label :aula %>
+    <%= f.text_field :aula %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

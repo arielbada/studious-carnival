@@ -1,0 +1,11 @@
+<h1>Editing Seccion</h1>
+
+<div class="field">
+	<%= label :seccion, "Seccion" %>
+	<%= text_field_tag :seccion, @seccion.seccion, :disabled => true %>
+</div>
+  
+<%= render 'form', seccion: @seccion %>
+
+<%= link_to 'Show', @seccion %> |
+<%= link_to 'Back', secciones_path %>

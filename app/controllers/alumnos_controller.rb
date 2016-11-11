@@ -6,7 +6,7 @@ class AlumnosController < ApplicationController
   def index
     @alumnos = Alumno.all
 	#@alumnos = Alumno.filter(params.slice(:nombre, :apellido))
-	@alumnos = Alumno.filter(params, @alumnos)	
+	@alumnos = Alumno.filter(params, @alumnos)
   end
 
   # GET /alumnos/1
