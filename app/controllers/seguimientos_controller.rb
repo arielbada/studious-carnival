@@ -1,6 +1,6 @@
 class SeguimientosController < ApplicationController
-#  before_action :set_seguimiento, only: [:show, :edit, :update, :destroy]
-  before_action :set_seguimiento, only: [:show, :update, :destroy]
+  before_action :set_seguimiento, only: [:show, :edit, :update, :destroy]
+  #before_action :set_seguimiento, only: [:show, :update, :destroy]
 
   # GET /seguimientos
   # GET /seguimientos.json
