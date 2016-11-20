@@ -5,6 +5,7 @@ class SedesController < ApplicationController
   # GET /sedes.json
   def index
     @sedes = Sede.all
+	@sedes = Sede.filter(params, @sedes)
   end
 
   # GET /sedes/1

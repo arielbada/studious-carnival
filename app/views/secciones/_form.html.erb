@@ -14,15 +14,15 @@
   
   <div class="field">
     <%= f.label :modulo %>
-    <%= f.text_field :modulo %>
+	<%= f.select :modulo, options_for_select(["M00", "M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M13"], seccion.seccion.match(/M\d\d/)[0]) %>
   </div>
   <div class="field">
     <%= f.label :cohorte %>
-    <%= f.text_field :cohorte %>
+	<%= f.select :cohorte, options_for_select(["C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10", "C11", "C12"], seccion.seccion.match(/C\d\d/)[0]) %>
   </div>
   <div class="field">
     <%= f.label :aula %>
-    <%= f.text_field :aula %>
+    <%= f.text_field :aula, :value => seccion.seccion.match(/A\d\d/)[0] %>
   </div>
   
   <div class="actions">
