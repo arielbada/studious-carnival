@@ -14,7 +14,7 @@
       <th>Correo</th>
       <th>Fecha nacimiento</th>
       <th>Sede</th>
-      <th>Estado de la Inscripción</th>
+      <th>Legajo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -64,10 +64,10 @@
 						</div>
 						<div class="modal-body">
 							<table class="table-condensed">
-								<tr><td>Certificado</td><td><span class='glyphicon <%= alumno.inscripcion_certificado ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
-								<tr><td>Foto</td><td><span class='glyphicon <%= alumno.inscripcion_foto ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
-								<tr><td>Partida</td><td><span class='glyphicon <%= alumno.inscripcion_partida ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
 								<tr><td>Ficha</td><td><span class='glyphicon <%= alumno.inscripcion_ficha ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
+								<tr><td>Fotocopia DNI</td><td><span class='glyphicon <%= alumno.inscripcion_foto ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
+								<tr><td>Partida</td><td><span class='glyphicon <%= alumno.inscripcion_partida ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
+								<tr><td>Certificado</td><td><span class='glyphicon <%= alumno.inscripcion_certificado ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>								
 							</table>
 						</div>
 						<div class="modal-footer">
