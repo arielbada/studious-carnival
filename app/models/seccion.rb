@@ -1,4 +1,5 @@
 class Seccion < ApplicationRecord
+	has_many :seguimiento
 	attr_accessor  :modulo, :cohorte, :aula
 	
 	before_save :concatenate_seccion

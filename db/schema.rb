@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123115034) do
+ActiveRecord::Schema.define(version: 20161123133345) do
 
   create_table "alumnos", force: :cascade do |t|
     t.string   "dni"
@@ -62,16 +62,17 @@ ActiveRecord::Schema.define(version: 20161123115034) do
     t.string   "cohorte"
     t.string   "modulo"
     t.date     "fecha_acta"
-    t.string   "aula"
     t.string   "estado"
     t.integer  "calificacion"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "comentario"
+    t.integer  "seccion_id"
     t.index ["alumno_id"], name: "index_seguimientos_on_alumno_id"
     t.index ["cohorte"], name: "index_seguimientos_on_cohorte"
     t.index ["fecha_acta"], name: "index_seguimientos_on_fecha_acta"
     t.index ["modulo"], name: "index_seguimientos_on_modulo"
+    t.index ["seccion_id"], name: "index_seguimientos_on_seccion_id"
   end
 
   create_table "users", force: :cascade do |t|

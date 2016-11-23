@@ -7,9 +7,9 @@
     <tr>
       <th>Alumno</th>
       <th>Cohorte</th>
-      <th>Modulo</th>
+      <th>Módulo</th>
       <th>Fecha acta</th>
-      <th>Aula</th>
+      <th>Sección</th>
       <th>Estado</th>
       <th>Calif.</th>
       <th>Comentario</th>
@@ -24,13 +24,13 @@
         <td><%= seguimiento.cohorte %></td>
         <td><%= seguimiento.modulo %></td>
         <td><%= seguimiento.fecha_acta %></td>
-        <td><%= seguimiento.aula %></td>
+        <td><%= seguimiento.seccion.seccion %></td>
         <td><%= seguimiento.estado %></td>
         <td><%= seguimiento.calificacion %></td>
         <td><%= seguimiento.comentario.length < 25 ? seguimiento.comentario : seguimiento.comentario[0..30]+	"..." %></td>
         <td><%= link_to 'Mostrar', seguimiento, class: 'btn btn-xs' %></td>
         <td><%= link_to 'Editar', edit_seguimiento_path(seguimiento), class: 'btn btn-xs' %></td>
-        <td><%= link_to 'Eliminar', seguimiento, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Eliminar', seguimiento, method: :delete, data: { confirm: 'Está Seguro?' }, class: 'btn btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>

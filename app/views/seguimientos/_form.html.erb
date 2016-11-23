@@ -22,7 +22,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :modulo %>
+    <%= f.label :modulo, "Módulo" %>
     <%= f.select :modulo, options_for_select(["M00", "M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M13"], seguimiento.modulo) %>
   </div>
 
@@ -32,8 +32,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :aula %>
-    <%= f.text_field :aula %>
+    <%= f.label :seccion_id, "Sección" %>
+    <%= f.select :seccion_id, options_for_select(Seccion.all.map{ |s| [s.seccion, s.id] }, seguimiento[:seccion_id]) %>
   </div>
 
   <div class="field">
@@ -42,7 +42,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :calificacion %>
+    <%= f.label :calificacion, "Calificación" %>
     <%= f.select :calificacion, options_for_select([0, 7, 8, 9, 10]) %>
   </div>
   
