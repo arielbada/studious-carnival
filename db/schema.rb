@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111142358) do
+ActiveRecord::Schema.define(version: 20161123115034) do
 
   create_table "alumnos", force: :cascade do |t|
     t.string   "dni"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20161111142358) do
     t.integer  "calificacion"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "comentario"
     t.index ["alumno_id"], name: "index_seguimientos_on_alumno_id"
     t.index ["cohorte"], name: "index_seguimientos_on_cohorte"
     t.index ["fecha_acta"], name: "index_seguimientos_on_fecha_acta"

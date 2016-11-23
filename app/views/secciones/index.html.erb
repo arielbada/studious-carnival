@@ -13,9 +13,9 @@
     <% @secciones.each do |seccion| %>
       <tr>
         <td><%= seccion.seccion %></td>
-        <td><%= link_to 'Show', seccion %></td>
-        <td><%= link_to 'Edit', edit_seccion_path(seccion) %></td>
-        <td><%= link_to 'Destroy', seccion, method: :delete, data: { confirm: 'Are you sure?', class: 'btn btn-xs' } %></td>
+        <td><%= link_to 'Mostrar', seccion %></td>
+        <td><%= link_to 'Editar', edit_seccion_path(seccion) %></td>
+        <td><%= link_to 'Eliminar', seccion, method: :delete, data: { confirm: 'Are you sure?', class: 'btn btn-xs' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Seccion', new_seccion_path %>
+<%= link_to 'Nuevo Seccion', new_seccion_path %>

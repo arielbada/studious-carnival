@@ -31,9 +31,9 @@
         <td><%= sede.direccion %></td>
         <td><%= sede.telefono %></td>
         <td><%= sede.nombre_contacto %></td>
-        <td><%= link_to 'Show', sede, class: 'btn btn-xs' %></td>
-        <td><%= link_to 'Edit', edit_sede_path(sede), class: 'btn btn-xs' %></td>
-        <td><%= link_to 'Destroy', sede, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Mostrar', sede, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Editar', edit_sede_path(sede), class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Eliminar', sede, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -41,4 +41,4 @@
 
 <br>
 
-<%= link_to 'New Sede', new_sede_path, class: 'btn' %>
+<%= link_to 'Nuevo Sede', new_sede_path, class: 'btn' %>

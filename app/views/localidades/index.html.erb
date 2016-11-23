@@ -19,9 +19,9 @@
         <td><%= localidad.region_educativa %></td>
         <td><%= localidad.nodo %></td>
 		<td><%= localidad.departamento %></td>
-        <td><%= link_to 'Show', localidad, class: 'btn btn-xs'%></td>
-        <td><%= link_to 'Edit', edit_localidad_path(localidad), class: 'btn btn-xs' %></td>
-        <td><%= link_to 'Destroy', localidad, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Mostrar', localidad, class: 'btn btn-xs'%></td>
+        <td><%= link_to 'Editar', edit_localidad_path(localidad), class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Eliminar', localidad, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Localidad', new_localidad_path, class: 'btn' %>
+<%= link_to 'Nuevo Localidad', new_localidad_path, class: 'btn' %>

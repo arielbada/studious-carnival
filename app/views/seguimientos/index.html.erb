@@ -11,7 +11,8 @@
       <th>Fecha acta</th>
       <th>Aula</th>
       <th>Estado</th>
-      <th>Calificacion</th>
+      <th>Calif.</th>
+      <th>Comentario</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,9 +27,10 @@
         <td><%= seguimiento.aula %></td>
         <td><%= seguimiento.estado %></td>
         <td><%= seguimiento.calificacion %></td>
-        <td><%= link_to 'Show', seguimiento, class: 'btn btn-xs' %></td>
-        <td><%= link_to 'Edit', edit_seguimiento_path(seguimiento), class: 'btn btn-xs' %></td>
-        <td><%= link_to 'Destroy', seguimiento, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
+        <td><%= seguimiento.comentario.length < 25 ? seguimiento.comentario : seguimiento.comentario[0..30]+	"..." %></td>
+        <td><%= link_to 'Mostrar', seguimiento, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Editar', edit_seguimiento_path(seguimiento), class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Eliminar', seguimiento, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Seguimiento', new_seguimiento_path, class: 'btn' %>
+<%= link_to 'Nuevo Seguimiento', new_seguimiento_path, class: 'btn' %>

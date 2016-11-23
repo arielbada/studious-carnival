@@ -71,16 +71,16 @@
 							</table>
 						</div>
 						<div class="modal-footer">
-							<%= link_to 'Edit', edit_alumno_path(alumno), class: 'btn' %>
+							<%= link_to 'Editar', edit_alumno_path(alumno), class: 'btn' %>
 							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 						</div>
 					</div>	
 				</div>
 			</div>
 		</td>
-        <td><%= link_to 'Show', alumno, class: 'btn btn-xs' %></td>
-        <td><%= link_to 'Edit', edit_alumno_path(alumno), class: 'btn btn-xs' %></td>
-        <td><%= link_to 'Destroy', alumno, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Mostrar', alumno, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Editar', edit_alumno_path(alumno), class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Eliminar', alumno, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -88,4 +88,4 @@
 
 <br>
 
-<%= link_to 'New Alumno', new_alumno_path, class: 'btn' %>
+<%= link_to 'Nuevo Alumno', new_alumno_path, class: 'btn' %>

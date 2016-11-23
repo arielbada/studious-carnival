@@ -45,6 +45,11 @@
     <%= f.label :calificacion %>
     <%= f.select :calificacion, options_for_select([0, 7, 8, 9, 10]) %>
   </div>
+  
+  <div class="field">
+    <%= f.label :comentario %>
+    <%= f.text_area :comentario %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

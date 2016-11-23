@@ -35,5 +35,10 @@
   <%= @seguimiento.calificacion %>
 </p>
 
-<%= link_to 'Edit', edit_seguimiento_path(@seguimiento) %> |
-<%= link_to 'Back', seguimientos_path %>
+<p>
+  <strong>Comentario:</strong>
+  <%= @seguimiento.comentario %>
+</p>
+
+<%= link_to 'Editar', edit_seguimiento_path(@seguimiento) %> |
+<%= link_to 'Volver', seguimientos_path %>
