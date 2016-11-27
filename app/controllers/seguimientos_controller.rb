@@ -6,6 +6,7 @@ class SeguimientosController < ApplicationController
   # GET /seguimientos.json
   def index
     @seguimientos = Seguimiento.all
+	@seguimientos = @seguimientos.order(fecha_acta: :desc)
   end
 
   # GET /seguimientos/1

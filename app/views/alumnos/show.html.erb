@@ -79,7 +79,7 @@
       <th>Cohorte</th>
       <th>Módulo</th>
       <th>Fecha acta</th>
-      <th>Aula</th>
+      <th>Seccion</th>
       <th>Estado</th>
       <th>Calificación</th>
       <th colspan="3"></th>
@@ -87,12 +87,13 @@
   </thead>
 
   <tbody>
-    <% @alumno.seguimiento.each do |seguimiento| %>
+	<% seguimientos = @alumno.seguimiento.order(fecha_acta: :desc) %>
+    <% seguimientos.each do |seguimiento| %>
       <tr>        
         <td><%= seguimiento.cohorte %></td>
         <td><%= seguimiento.modulo %></td>
         <td><%= seguimiento.fecha_acta %></td>
-        <td><%= seguimiento.aula %></td>
+        <td><%= seguimiento.seccion.seccion %></td>
         <td><%= seguimiento.estado %></td>
         <td><%= seguimiento.calificacion %></td>
         <td><%= link_to 'Mostrar', seguimiento, class: 'btn btn-xs' %></td>
