@@ -7,12 +7,7 @@
       <th>DNI</th>
       <th>Nombre</th>
       <th>Apellido</th>
-      <th>Localidad</th>
-      <th>Domicilio</th>
-      <th>Telefono fijo</th>
-      <th>Telefono celular</th>
-      <th>Correo</th>
-      <th>Fecha nacimiento</th>
+      <th>Localidad</th>      
       <th>Sede</th>
       <th>Legajo</th>
       <th colspan="3"></th>
@@ -24,16 +19,9 @@
 		<td><%= text_field_tag :dni, params[:dni] %></td>
 		<td><%= text_field_tag :nombre, params[:nombre] %></td>
 		<td><%= text_field_tag :apellido, params[:apellido] %></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td><%= text_field_tag :localidad, params[:localidad] %></td>
+		<td></td>	
+		<td colspan="3"></td>
 		<td><%= submit_tag("Search", :name => nil) %></td>
 	  <% end %>
 	</tr>
@@ -44,11 +32,6 @@
         <td><%= alumno.nombre %></td>
         <td><%= alumno.apellido %></td>
         <td><%= alumno.localidad.localidad %></td>
-        <td><%= alumno.domicilio %></td>
-        <td><%= alumno.telefono_fijo %></td>
-        <td><%= alumno.telefono_celular %></td>
-        <td><%= alumno.correo %></td>
-        <td><%= alumno.fecha_nacimiento %></td>
         <td><%= alumno.sede.escuela %></td>
 		<td>
 		  <!-- Button trigger modal -->
