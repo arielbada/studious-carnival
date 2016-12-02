@@ -28,6 +28,11 @@ end
 				if key != 'controller' && key != 'action' then
 					if validateParams(key) then
 						obj = obj.where(key + " like ?", "%#{val}%")
+					else
+						if validateParamsSub(key) then							
+							#obj = obj.where("EXISTS (SELECT * FROM localidades l, alumnos a WHERE l.id = a.localidad_id and l.localidad like '%#{val}%')")
+							obj = obj.includes(key).where(key + " like ?", "%#{val}%").references(key)	# http://stackoverflow.com/questions/18234602/rails-active-record-querying-association-with-exists					
+						end
 					end
 				end
 			end
@@ -43,6 +48,17 @@ end
 			end
 			i
 		end
+		
+		def validateParamsSub(pname)
+			i = false
+			self.columns.each do |column|
+				if pname+"_id" == column.name then
+					i = true
+				end
+			end
+			i
+		end
+		
 	end
 end
 
