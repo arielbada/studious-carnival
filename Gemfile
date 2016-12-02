@@ -46,4 +46,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Custom gems
 
 # Use Devise to login users
-gem 'devise'
+gem 'devise', '~> 4.2.0'
+
+# Use query_report for reports
+#gem 'query_report', '~> 1.0.4'

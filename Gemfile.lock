@@ -159,7 +159,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
-  devise
+  devise (~> 4.2.0)
   jbuilder (~> 2.5)
   jquery-rails
   puma (~> 3.0)
