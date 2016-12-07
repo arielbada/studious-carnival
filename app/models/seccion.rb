@@ -1,4 +1,5 @@
 class Seccion < ApplicationRecord
+    include Filterable
 	has_many :seguimiento
 	attr_accessor  :modulo, :cohorte, :aula
 	

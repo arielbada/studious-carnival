@@ -16,11 +16,11 @@
     <tr><%= form_tag sedes_path, :method => 'get' do %>
 		<td><%= text_field_tag :escuela, params[:escuela] %></td>
 		<td><%= text_field_tag :direccion, params[:direccion] %></td>
-		<td><%= text_field_tag :telefono, params[:telefono] %></td>
+		<td></td>
 		<td><%= text_field_tag :nombre_contacto, params[:nombre_contacto] %></td>
 		<td></td>
 		<td></td>		
-		<td><%= submit_tag("Search", :name => nil) %></td>
+		<td><%= submit_tag("Buscar", :name => nil) %></td>
 	    <% end %>
 	  </tr>
   

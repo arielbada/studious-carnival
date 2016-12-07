@@ -24,14 +24,18 @@ end
 
 		#@projects = Project.parseParams(params,@projects)
 		def filter(p, obj)
-			p.each do |key, val|
+			p.each do |key, val|				
 				if key != 'controller' && key != 'action' then
 					if validateParams(key) then
-						obj = obj.where(key + " like ?", "%#{val}%")
+						obj = obj.where(key + " like ?", "%#{val}%")						
 					else
-						if validateParamsSub(key) then							
-							#obj = obj.where("EXISTS (SELECT * FROM localidades l, alumnos a WHERE l.id = a.localidad_id and l.localidad like '%#{val}%')")
-							obj = obj.includes(key).where(key + " like ?", "%#{val}%").references(key)	# http://stackoverflow.com/questions/18234602/rails-active-record-querying-association-with-exists					
+						if validateParamsSub(key) then
+							if key != "alumno"	#improve with attr_accessor option
+								#obj = obj.where("EXISTS (SELECT * FROM localidades l, alumnos a WHERE l.id = a.localidad_id and l.localidad like '%#{val}%')")
+								obj = obj.includes(key).where(key + " like ?", "%#{val}%").references(key)	# http://stackoverflow.com/questions/18234602/rails-active-record-querying-association-with-exists
+							else
+								obj = obj.includes(key).where("nombre like '%#{val}%' OR apellido like '%#{val}%'")
+							end							
 						end
 					end
 				end
@@ -53,7 +57,7 @@ end
 			i = false
 			self.columns.each do |column|
 				if pname+"_id" == column.name then
-					i = true
+					i = true					
 				end
 			end
 			i

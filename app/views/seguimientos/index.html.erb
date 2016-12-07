@@ -1,12 +1,11 @@
 
 <h1>Seguimientos</h1>
+<h3><small><%#= "La búsqueda devolvió #{@seguimientos.count} registros." if @seguimientos.count != Seguimiento.all.count %></small></h1>
 
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
       <th>Alumno</th>
-      <th>Cohorte</th>
-      <th>Módulo</th>
       <th>Fecha acta</th>
       <th>Sección</th>
       <th>Estado</th>
@@ -17,11 +16,21 @@
   </thead>
 
   <tbody>
+   <tr><%= form_tag seguimientos_path, :method => 'get' do %>
+		<td><%= text_field_tag :alumno, params[:alumno] %></td>
+		<td><%= text_field_tag :fecha_acta, params[:fecha_acta] %></td>
+		<td><%= text_field_tag :seccion, params[:seccion] %></td>
+		<td><%= select_tag :estado, options_for_select(["", "Aprobado", "Regular", "Recursa", "Abandono"], params[:estado]) %></td>				
+		<td></td>
+		<td><%= text_field_tag :comentario, params[:comentario] %></td>
+		<td></td>
+		<td></td>
+		<td><%= submit_tag("Buscar", :name => nil) %></td>
+	  <% end %>
+	</tr>
     <% @seguimientos.each do |seguimiento| %>
       <tr>
-        <td><%="#{seguimiento.alumno.apellido}, #{seguimiento.alumno.nombre}" %></td>
-        <td><%= seguimiento.cohorte %></td>
-        <td><%= seguimiento.modulo %></td>
+        <td><%= seguimiento.alumno.alumno %></td>
         <td><%= seguimiento.fecha_acta %></td>
         <td><%= seguimiento.seccion.seccion %></td>
         <td><%= seguimiento.estado %></td>

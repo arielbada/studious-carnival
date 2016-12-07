@@ -5,6 +5,7 @@ class SeccionesController < ApplicationController
   # GET /secciones.json
   def index
     @secciones = Seccion.all
+	@secciones = Seccion.filter(params, @secciones)
   end
 
   # GET /secciones/1
