@@ -16,7 +16,7 @@
 </p>
 
 <p>
-  <strong>Localidad:</strong>
+  <strong>Sede Provincial:</strong>
   <%= @alumno.localidad.localidad %>
 </p>
 
@@ -46,8 +46,8 @@
 </p>
 
 <p>
-  <strong>Sede:</strong>
-  <%= @alumno.sede.escuela %>
+  <strong>SIGAE:</strong>
+  <%= @alumno.sigae %>
 </p>
 
 <p>
@@ -75,9 +75,7 @@
 
 <table class="table table-condensed table-hover">
   <thead>
-    <tr>      
-      <th>Cohorte</th>
-      <th>Módulo</th>
+    <tr>
       <th>Fecha acta</th>
       <th>Seccion</th>
       <th>Estado</th>
@@ -90,8 +88,6 @@
 	<% seguimientos = @alumno.seguimiento.order(fecha_acta: :desc) %>
     <% seguimientos.each do |seguimiento| %>
       <tr>        
-        <td><%= seguimiento.cohorte %></td>
-        <td><%= seguimiento.modulo %></td>
         <td><%= seguimiento.fecha_acta %></td>
         <td><%= seguimiento.seccion.seccion %></td>
         <td><%= seguimiento.estado %></td>

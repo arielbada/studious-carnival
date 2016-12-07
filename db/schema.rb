@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123133345) do
+ActiveRecord::Schema.define(version: 20161207193841) do
 
   create_table "alumnos", force: :cascade do |t|
     t.string   "dni"
@@ -22,15 +22,14 @@ ActiveRecord::Schema.define(version: 20161123133345) do
     t.string   "telefono_celular"
     t.string   "correo"
     t.date     "fecha_nacimiento"
-    t.integer  "sede_id"
     t.boolean  "inscripcion_certificado"
     t.boolean  "inscripcion_foto"
     t.boolean  "inscripcion_partida"
     t.boolean  "inscripcion_ficha"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.boolean  "sigae"
     t.index ["localidad_id"], name: "index_alumnos_on_localidad_id"
-    t.index ["sede_id"], name: "index_alumnos_on_sede_id"
   end
 
   create_table "localidades", force: :cascade do |t|
@@ -59,8 +58,6 @@ ActiveRecord::Schema.define(version: 20161123133345) do
 
   create_table "seguimientos", force: :cascade do |t|
     t.integer  "alumno_id"
-    t.string   "cohorte"
-    t.string   "modulo"
     t.date     "fecha_acta"
     t.string   "estado"
     t.integer  "calificacion"
@@ -69,9 +66,7 @@ ActiveRecord::Schema.define(version: 20161123133345) do
     t.string   "comentario"
     t.integer  "seccion_id"
     t.index ["alumno_id"], name: "index_seguimientos_on_alumno_id"
-    t.index ["cohorte"], name: "index_seguimientos_on_cohorte"
     t.index ["fecha_acta"], name: "index_seguimientos_on_fecha_acta"
-    t.index ["modulo"], name: "index_seguimientos_on_modulo"
     t.index ["seccion_id"], name: "index_seguimientos_on_seccion_id"
   end
 

@@ -57,8 +57,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :sede_id %>
-    <%= f.select :sede_id, options_for_select(Sede.all.map{ |s| [s.escuela, s.id] }, alumno[:sede_id]) %>
+    <%= f.label :sigae, "SIGAE" %>
+    <%= f.check_box :sigae %>
   </div>
 
   <div class="field">

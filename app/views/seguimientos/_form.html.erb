@@ -15,17 +15,7 @@
     <%= f.label :alumno_id %>
     <%= f.select :alumno_id, options_for_select(Alumno.all.map{ |a| [a.apellido + ", " + a.nombre, a.id] }, seguimiento[:alumno_id]) %>
   </div>
-
-  <div class="field">
-    <%= f.label :cohorte %>
-    <%= f.select :cohorte, options_for_select(["C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10", "C11", "C12"], seguimiento.cohorte) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :modulo, "Módulo" %>
-    <%= f.select :modulo, options_for_select(["M00", "M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M13"], seguimiento.modulo) %>
-  </div>
-
+  
   <div class="field">
     <%= f.label :fecha_acta %>
     <%= f.date_select :fecha_acta %>
