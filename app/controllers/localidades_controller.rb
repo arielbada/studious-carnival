@@ -5,6 +5,7 @@ class LocalidadesController < ApplicationController
   # GET /localidades.json
   def index
     @localidades = Localidad.all
+	@localidades = Localidad.filter(params, @localidades)
   end
 
   # GET /localidades/1

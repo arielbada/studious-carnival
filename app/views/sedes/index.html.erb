@@ -1,5 +1,6 @@
 
 <h1>Sedes Territoriales</h1>
+<h3><small><%= "La búsqueda devolvió #{@sedes.count} registros." if @sedes.count != Sede.all.count %></small></h3>
 
 <table class="table table-condensed table-hover">
   <thead>
