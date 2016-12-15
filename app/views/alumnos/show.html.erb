@@ -47,27 +47,27 @@
 
 <p>
   <strong>SIGAE:</strong>
-  <%= @alumno.sigae %>
+  <%= check_box_tag @alumno.sigae, @alumno.sigae, @alumno.sigae, {disabled: true} %>
 </p>
 
 <p>
   <strong>Inscripción certificado:</strong>
-  <%= @alumno.inscripcion_certificado %>
+  <%= check_box_tag @alumno.inscripcion_certificado, @alumno.inscripcion_certificado, @alumno.inscripcion_certificado, {disabled: true} %>
 </p>
 
 <p>
   <strong>Inscripción fotocopia DNI:</strong>
-  <%= @alumno.inscripcion_foto %>
+  <%= check_box_tag @alumno.inscripcion_foto, @alumno.inscripcion_foto, @alumno.inscripcion_foto, {disabled: true} %>
 </p>
 
 <p>
   <strong>Inscripción partida:</strong>
-  <%= @alumno.inscripcion_partida %>
+  <%= check_box_tag @alumno.inscripcion_partida, @alumno.inscripcion_partida, @alumno.inscripcion_partida, {disabled: true} %>
 </p>
 
 <p>
   <strong>Inscripción ficha:</strong>
-  <%= @alumno.inscripcion_ficha %>
+  <%= check_box_tag @alumno.inscripcion_ficha, @alumno.inscripcion_ficha, @alumno.inscripcion_ficha, {disabled: true} %>
 </p>
 
 <%= link_to 'Editar', edit_alumno_path(@alumno) %> |
