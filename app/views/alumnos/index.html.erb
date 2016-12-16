@@ -17,14 +17,14 @@
 
   <tbody>
 	<tr><%= form_tag alumnos_path, :method => 'get' do %>
-		<td><%= text_field_tag :dni, params[:dni] %></td>
-		<td><%= text_field_tag :nombre, params[:nombre] %></td>
-		<td><%= text_field_tag :apellido, params[:apellido] %></td>
-		<td><%= text_field_tag :localidad, params[:localidad] %></td>
-		<td><%= check_box_tag :sigae, params[:sigae] %></td>
-		<td></td>	
-		<td colspan="3"></td>
-		<td><%= submit_tag("Buscar", :name => nil) %></td>
+		<td><%= text_field_tag :dni, params[:dni], :class => "form-control" %></td>
+		<td><%= text_field_tag :nombre, params[:nombre], :class => "form-control" %></td>
+		<td><%= text_field_tag :apellido, params[:apellido], :class => "form-control" %></td>
+		<td><%= text_field_tag :localidad, params[:localidad], :class => "form-control" %></td>
+		<td><%= select_tag :sigae, options_for_select([["", ""], ["✔", "true"], ["✘", "false"]], params[:sigae]), :class => "form-control" %></td>
+		<td><%= select_tag :legajo, options_for_select([["", ""], ["✔", "true"], ["✘", "false"]], params[:legajo]), :class => "form-control" %></td>
+		<td colspan="2"></td>
+		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
 	  <% end %>
 	</tr>
   

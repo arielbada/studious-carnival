@@ -15,13 +15,13 @@
 
   <tbody>
     <tr><%= form_tag localidades_path, :method => 'get' do %>
-		<td><%= text_field_tag :localidad, params[:localidad] %></td>
-		<td><%= text_field_tag :region_educativa, params[:region_educativa] %></td>
-		<td><%= text_field_tag :nodo, params[:nodo] %></td>
-		<td><%= text_field_tag :departamento, params[:departamento] %></td>
+		<td><%= text_field_tag :localidad, params[:localidad], :class => "form-control" %></td>
+		<td><%= text_field_tag :region_educativa, params[:region_educativa], :class => "form-control" %></td>
+		<td><%= text_field_tag :nodo, params[:nodo], :class => "form-control" %></td>
+		<td><%= text_field_tag :departamento, params[:departamento], :class => "form-control" %></td>
 		<td></td>
 		<td></td>
-		<td><%= submit_tag("Buscar", :name => nil) %></td>
+		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
 	  <% end %>
 	</tr>
     <% @localidades.each do |localidad| %>

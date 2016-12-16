@@ -26,21 +26,34 @@ end
 		def filter(p, obj)
 			p.each do |key, val|				
 				if key != 'controller' && key != 'action' then
-					if validateParams(key) then
-						obj = obj.where(key + " like ?", "%#{val}%")						
+					value = sanitizeValue(val)	#added boolean support
+					if validateParams(key) then						
+						obj = obj.where(key + " like ?", value)
 					else
 						if validateParamsSub(key) then
 							if key != "alumno"	#improve with attr_accessor option
 								#obj = obj.where("EXISTS (SELECT * FROM localidades l, alumnos a WHERE l.id = a.localidad_id and l.localidad like '%#{val}%')")
-								obj = obj.includes(key).where(key + " like ?", "%#{val}%").references(key)	# http://stackoverflow.com/questions/18234602/rails-active-record-querying-association-with-exists
+								obj = obj.includes(key).where(key + " like ?", value).references(key)	# http://stackoverflow.com/questions/18234602/rails-active-record-querying-association-with-exists
 							else
 								obj = obj.includes(key).where("nombre like '%#{val}%' OR apellido like '%#{val}%'")
 							end							
+						end						
+						if key == "legajo"
+							value ? cond = "AND" : cond = "OR"		# if legajo true, condition is for all items true, if false, at least an item should be false														
+							obj = obj.where("inscripcion_ficha = ? #{cond} inscripcion_foto = ? #{cond} inscripcion_partida = ? #{cond} inscripcion_certificado = ?", value, value, value, value)
 						end
 					end
 				end
 			end
 			obj
+		end
+		
+		def sanitizeValue(val)
+			if ["true", "false"].include?(val)
+				val == "true" ? true : false
+			else
+				"%#{val}%"
+			end
 		end
 		
 		def validateParams(pname)

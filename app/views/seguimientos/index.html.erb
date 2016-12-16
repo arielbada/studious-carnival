@@ -17,15 +17,15 @@
 
   <tbody>
    <tr><%= form_tag seguimientos_path, :method => 'get' do %>
-		<td><%= text_field_tag :alumno, params[:alumno] %></td>
-		<td><%= text_field_tag :fecha_acta, params[:fecha_acta] %></td>
-		<td><%= text_field_tag :seccion, params[:seccion] %></td>
-		<td><%= select_tag :estado, options_for_select(["", "Aprobado", "Regular", "Recursa", "Abandono"], params[:estado]) %></td>				
+		<td><%= text_field_tag :alumno, params[:alumno], :class => "form-control" %></td>
+		<td><%= text_field_tag :fecha_acta, params[:fecha_acta], :class => "form-control" %></td>
+		<td><%= text_field_tag :seccion, params[:seccion], :class => "form-control" %></td>
+		<td><%= select_tag :estado, options_for_select(["", "Aprobado", "Regular", "Recursa", "Abandono"], params[:estado]), :class => "form-control" %></td>				
 		<td></td>
-		<td><%= text_field_tag :comentario, params[:comentario] %></td>
+		<td><%= text_field_tag :comentario, params[:comentario], :class => "form-control" %></td>
 		<td></td>
 		<td></td>
-		<td><%= submit_tag("Buscar", :name => nil) %></td>
+		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
 	  <% end %>
 	</tr>
     <% @seguimientos.each do |seguimiento| %>
