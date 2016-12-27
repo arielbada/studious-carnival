@@ -42,6 +42,9 @@ end
 							value ? cond = "AND" : cond = "OR"		# if legajo true, condition is for all items true, if false, at least an item should be false														
 							obj = obj.where("inscripcion_ficha = ? #{cond} inscripcion_foto = ? #{cond} inscripcion_partida = ? #{cond} inscripcion_certificado = ?", value, value, value, value)
 						end
+						if key == "cada_ultimo_registro"							
+							obj = obj.group("alumno_id").having("fecha_acta = MAX(fecha_acta)")
+						end
 					end
 				end
 			end

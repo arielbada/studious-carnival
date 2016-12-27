@@ -1,6 +1,6 @@
 
 <h1>Seguimientos</h1>
-<h3><small><%= "La búsqueda devolvió #{@seguimientos.count} registros." if @seguimientos.count != Seguimiento.all.count %></small></h3>
+<h3><small><%= "La búsqueda devolvió #{@seguimientos.count.inspect } registros." if @seguimientos.count != Seguimiento.all.count %></small></h3>
 
 <table class="table table-condensed table-hover">
   <thead>
@@ -23,8 +23,7 @@
 		<td><%= select_tag :estado, options_for_select(["", "Aprobado", "Regular", "Recursa", "Abandono"], params[:estado]), :class => "form-control" %></td>				
 		<td></td>
 		<td><%= text_field_tag :comentario, params[:comentario], :class => "form-control" %></td>
-		<td></td>
-		<td></td>
+		<td colspan="2"><%= check_box_tag :cada_ultimo_registro, "true", params[:cada_ultimo_registro] ? true : params[:cada_ultimo_registro], :class => "checkbox" %><small>Sólo últimos registros</small></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
 	  <% end %>
 	</tr>
