@@ -13,19 +13,23 @@
 
   
   <div class="field">
-    <%= f.label :modulo %>
-	<% default_modulo = seccion.seccion.match(/M\d\d/)[0] if seccion.seccion %>
-	<%= f.select :modulo, options_for_select(["M00", "M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M13"], default_modulo) %>
-  </div>
-  <div class="field">
     <%= f.label :cohorte %>
 	<% default_cohorte = seccion.seccion.match(/C\d\d/)[0] if seccion.seccion %>
 	<%= f.select :cohorte, options_for_select(["C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10", "C11", "C12"], default_cohorte) %>
   </div>
   <div class="field">
+    <%= f.label :modulo %>
+	<% default_modulo = seccion.seccion.match(/M\d\d/)[0] if seccion.seccion %>
+	<%= f.select :modulo, options_for_select(["M00", "M01", "M02", "M03", "M04", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M13"], default_modulo) %>
+  </div>
+  <div class="field">
     <%= f.label :aula %>
 	<% default_aula = seccion.seccion.match(/A\d\d/)[0] if seccion.seccion %>
     <%= f.text_field :aula, :value => default_aula %>
+  </div>
+  <div class="field">
+    <%= f.label :activa %>	
+    <%= f.check_box :activa %>
   </div>
   
   <div class="actions">

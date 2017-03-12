@@ -5,5 +5,11 @@
   <%= @seccion.seccion %>
 </p>
 
+<p>
+  <strong>Activa:</strong>
+  <%= @seccion.activa %>
+  <%= check_box_tag @seccion.activa, @seccion.activa, @seccion.activa, {disabled: true} %>
+</p>
+
 <%= link_to 'Editar', edit_seccion_path(@seccion) %> |
 <%= link_to 'Volver', secciones_path %>

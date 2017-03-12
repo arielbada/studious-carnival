@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Sección</th>
+	  <th>Activa</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
    <tr><%= form_tag secciones_path, :method => 'get' do %>
 		<td><%= text_field_tag :seccion, params[:seccion], :class => "form-control" %></td>		
 		<td></td>
+		<td></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
 	  <% end %>
 	</tr>
@@ -21,6 +23,7 @@
     <% @secciones.each do |seccion| %>
       <tr>
         <td><%= seccion.seccion %></td>
+        <td><span class="btn" style="cursor: not-allowed; pointer-events: none"><span class='glyphicon <%= seccion.activa ? "glyphicon-ok" : "glyphicon-remove"  %>'/></span></td>
         <td><%= link_to 'Editar', edit_seccion_path(seccion), class: 'btn btn-xs' %></td>
         <td><%= link_to 'Eliminar', seccion, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-xs' %></td>
       </tr>
