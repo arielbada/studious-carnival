@@ -14,7 +14,7 @@
   <tbody>
    <tr><%= form_tag secciones_path, :method => 'get' do %>
 		<td><%= text_field_tag :seccion, params[:seccion], :class => "form-control" %></td>		
-		<td></td>
+		<td><%= select_tag :activa, options_for_select([["", ""], ["✔", "true"], ["✘", "false"]], params[:activa]), :class => "form-control" %></td>
 		<td></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
 	  <% end %>
