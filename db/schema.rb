@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170223114423) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "alumnos", force: :cascade do |t|
     t.string   "dni"
     t.string   "nombre"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170223114423) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.boolean  "sigae"
-    t.index ["localidad_id"], name: "index_alumnos_on_localidad_id"
+    t.index ["localidad_id"], name: "index_alumnos_on_localidad_id", using: :btree
   end
 
   create_table "localidades", force: :cascade do |t|
@@ -66,9 +69,9 @@ ActiveRecord::Schema.define(version: 20170223114423) do
     t.datetime "updated_at",   null: false
     t.string   "comentario"
     t.integer  "seccion_id"
-    t.index ["alumno_id"], name: "index_seguimientos_on_alumno_id"
-    t.index ["fecha_acta"], name: "index_seguimientos_on_fecha_acta"
-    t.index ["seccion_id"], name: "index_seguimientos_on_seccion_id"
+    t.index ["alumno_id"], name: "index_seguimientos_on_alumno_id", using: :btree
+    t.index ["fecha_acta"], name: "index_seguimientos_on_fecha_acta", using: :btree
+    t.index ["seccion_id"], name: "index_seguimientos_on_seccion_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,8 +87,8 @@ ActiveRecord::Schema.define(version: 20170223114423) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
