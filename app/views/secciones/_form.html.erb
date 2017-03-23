@@ -28,8 +28,12 @@
     <%= f.text_field :aula, :value => default_aula %>
   </div>
   <div class="field">
-    <%= f.label :activa %>	
-    <%= f.check_box :activa %>
+    <%= f.label :fecha_inicio %>	
+    <%= f.date_select :fecha_inicio %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha_finalizacion %>	
+    <%= f.date_select :fecha_finalizacion %>
   </div>
   
   <div class="actions">

@@ -6,9 +6,15 @@
 </p>
 
 <p>
-  <strong>Activa:</strong>
-  <%= @seccion.activa %>
-  <%= check_box_tag @seccion.activa, @seccion.activa, @seccion.activa, {disabled: true} %>
+  <strong>Fecha Inicio:</strong>
+  <%= @seccion.fecha_inicio %>
+  <%= date_select_tag @seccion.fecha_inicio, @seccion.fecha_inicio, @seccion.fecha_inicio, {disabled: true} %>
+</p>
+
+<p>
+  <strong>Fecha Inicio:</strong>
+  <%= @seccion.fecha_finalización %>
+  <%= date_select_tag @seccion.fecha_finalización, @seccion.fecha_finalización, @seccion.fecha_finalización, {disabled: true} %>
 </p>
 
 <%= link_to 'Editar', edit_seccion_path(@seccion) %> |
