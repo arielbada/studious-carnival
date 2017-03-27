@@ -24,7 +24,7 @@
   </div>
   <div class="field">
     <%= f.label :aula %>
-	<% default_aula = seccion.seccion.match(/A\d\d/)[0] if seccion.seccion %>
+	<% default_aula = seccion.seccion.match(/[AB]\d\d/)[0] if seccion.seccion %>
     <%= f.text_field :aula, :value => default_aula %>
   </div>
   <div class="field">
