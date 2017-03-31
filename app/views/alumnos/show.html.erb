@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <strong>Sexo:</strong>
+  <%= @alumno.sexo %>
+</p>
+
+<p>
   <strong>Sede Provincial:</strong>
   <%= @alumno.localidad.localidad %>
 </p>
@@ -68,6 +73,21 @@
 <p>
   <strong>Inscripción ficha:</strong>
   <%= check_box_tag @alumno.inscripcion_ficha, @alumno.inscripcion_ficha, @alumno.inscripcion_ficha, {disabled: true} %>
+</p>
+
+<p>
+  <strong>Comentario Inscripción</strong>
+  <%= @alumno.comentario_inscripcion %>
+</p>
+
+<p>
+  <strong>Observación</strong>
+  <%= @alumno.observacion %>
+</p>
+
+<p>
+  <strong>Comentario</strong>
+  <%= @alumno.comentario %>
 </p>
 
 <%= link_to 'Editar', edit_alumno_path(@alumno) %> |

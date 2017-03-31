@@ -8,9 +8,12 @@
       <th>DNI</th>
       <th>Nombre</th>
       <th>Apellido</th>
+      <th>Sexo</th>
       <th>Localidad</th>
       <th>SIGAE</th>
       <th>Legajo</th>
+      <th>Observación</th>
+      <th>Comentario</th>	  
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +23,12 @@
 		<td><%= text_field_tag :dni, params[:dni], :class => "form-control" %></td>
 		<td><%= text_field_tag :nombre, params[:nombre], :class => "form-control" %></td>
 		<td><%= text_field_tag :apellido, params[:apellido], :class => "form-control" %></td>
+		<td><%= select_tag :sexo, options_for_select([["", ""], ["M", "M"], ["F", "F"]], params[:sexo]), :class => "form-control" %></td>
 		<td><%= text_field_tag :localidad, params[:localidad], :class => "form-control" %></td>
 		<td><%= select_tag :sigae, options_for_select([["", ""], ["✔", "true"], ["✘", "false"]], params[:sigae]), :class => "form-control" %></td>
 		<td><%= select_tag :legajo, options_for_select([["", ""], ["✔", "true"], ["✘", "false"]], params[:legajo]), :class => "form-control" %></td>
+		<td><%= text_field_tag :observacion, params[:observacion], :class => "form-control" %></td>
+		<td><%= text_field_tag :comentario, params[:comentario], :class => "form-control" %></td>
 		<td colspan="2"></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
 	  <% end %>
@@ -33,6 +39,7 @@
         <td><%= alumno.dni %></td>
         <td><%= alumno.nombre %></td>
         <td><%= alumno.apellido %></td>
+        <td><%= alumno.sexo %></td>
         <td><%= alumno.localidad.localidad %></td>
         <td><span class="btn" style="cursor: not-allowed; pointer-events: none"><span class='glyphicon <%= alumno.sigae ? "glyphicon-ok" : "glyphicon-remove"  %>'/></span></td>
 		<td>
@@ -63,6 +70,8 @@
 				</div>
 			</div>
 		</td>
+		<td><%= alumno.observacion %></td>
+		<td><%= alumno.comentario %></td>
         <td><%= link_to 'Mostrar', alumno, class: 'btn btn-xs' %></td>
         <td><%= link_to 'Editar', edit_alumno_path(alumno), class: 'btn btn-xs' %></td>
         <td><%= link_to 'Eliminar', alumno, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>

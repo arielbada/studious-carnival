@@ -72,6 +72,6 @@ class SeguimientosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seguimiento_params
-      params.require(:seguimiento).permit(:alumno_id, :fecha_acta, :seccion_id, :estado, :calificacion, :comentario)
+      params.require(:seguimiento).permit(:alumno_id, :fecha_acta, :seccion_id, :estado, :calificacion)
     end
 end

@@ -70,6 +70,6 @@ class LocalidadesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def localidad_params
-      params.require(:localidad).permit(:localidad, :region_educativa, :nodo, :departamento)
+      params.require(:localidad).permit(:localidad, :region_educativa, :nodo, :departamento, :es_sede_provincial)
     end
 end

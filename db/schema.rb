@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323210814) do
+ActiveRecord::Schema.define(version: 20170331033101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20170323210814) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.boolean  "sigae"
+    t.string   "comentario"
+    t.string   "comentario_inscripcion"
+    t.string   "sexo"
+    t.string   "observacion"
     t.index ["localidad_id"], name: "index_alumnos_on_localidad_id", using: :btree
   end
 
@@ -39,9 +43,10 @@ ActiveRecord::Schema.define(version: 20170323210814) do
     t.string   "localidad"
     t.string   "region_educativa"
     t.string   "nodo"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "departamento"
+    t.boolean  "es_sede_provincial"
   end
 
   create_table "secciones", force: :cascade do |t|
@@ -68,7 +73,6 @@ ActiveRecord::Schema.define(version: 20170323210814) do
     t.integer  "calificacion"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.string   "comentario"
     t.integer  "seccion_id"
     t.index ["alumno_id"], name: "index_seguimientos_on_alumno_id", using: :btree
     t.index ["fecha_acta"], name: "index_seguimientos_on_fecha_acta", using: :btree

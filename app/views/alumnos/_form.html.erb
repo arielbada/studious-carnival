@@ -25,6 +25,11 @@
     <%= f.label :apellido %>
     <%= f.text_field :apellido %>
   </div>
+  
+  <div class="field">
+    <%= f.label :sexo %>
+    <%= f.select :sexo, options_for_select(["", "M", "F"], alumno[:sexo]) %>
+  </div>
 
   <div class="field">
     <%= f.label :localidad_id %>
@@ -81,6 +86,16 @@
     <%= f.check_box :inscripcion_ficha %>
   </div>
 
+  <div class="field">
+    <%= f.label :observacion %>
+    <%= f.text_field :observacion %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :comentario_inscripcion %>
+    <%= f.text_field :comentario_inscripcion %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
