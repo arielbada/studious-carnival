@@ -24,18 +24,22 @@ end
 
 		#@projects = Project.parseParams(params,@projects)
 		def filter(p, obj)
-			p.each do |key, val|				
-				if key != 'controller' && key != 'action' then
+			p.each do |key, val|
+				if key != 'controller' && key != 'action' and val != "" then
 					value = sanitizeValue(val)	#added boolean support
-					if validateParams(key) then						
-						obj = obj.where(key + " like ?", value)
+					if validateParams(key) then
+						if value == true || value == false	# is boolean
+							obj = obj.where(key + " = " + val)
+						else
+							obj = obj.where(key + " ilike ?", value)
+						end
 					else
 						if validateParamsSub(key) then
 							if key != "alumno"	#improve with attr_accessor option
 								#obj = obj.where("EXISTS (SELECT * FROM localidades l, alumnos a WHERE l.id = a.localidad_id and l.localidad like '%#{val}%')")
-								obj = obj.includes(key).where(key + " like ?", value).references(key)	# http://stackoverflow.com/questions/18234602/rails-active-record-querying-association-with-exists
+								obj = obj.includes(key).where(key + " ilike ?", value).references(key)	# http://stackoverflow.com/questions/18234602/rails-active-record-querying-association-with-exists
 							else
-								obj = obj.includes(key).where("nombre like '%#{val}%' OR apellido like '%#{val}%'")
+								obj = obj.includes(key).where("nombre ilike '%#{val}%' OR apellido ilike '%#{val}%'")
 							end							
 						end						
 						if key == "legajo"
@@ -52,6 +56,7 @@ end
 		end
 		
 		def sanitizeValue(val)
+			val = val.downcase
 			if ["true", "false"].include?(val)
 				val == "true" ? true : false
 			else
