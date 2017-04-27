@@ -1,10 +1,12 @@
 
 <h1>Seguimientos</h1>
-<h3><small><%= "La búsqueda devolvió #{@seguimientos.count.inspect } registros." if @seguimientos.count != Seguimiento.all.count %></small></h3>
+
+<h3><small><%= @seguimientos.count != Seguimiento.all.count ? "La búsqueda devolvió #{@seguimientos.count} registros." : "Buscar sobre un total de #{@seguimientos.count} registros." %></small></h3>
 
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
+      <th>DNI</th>
       <th>Alumno</th>
       <th>Fecha acta</th>
       <th>Sección</th>
@@ -16,6 +18,7 @@
 
   <tbody>
    <tr><%= form_tag seguimientos_path, :method => 'get' do %>
+		<td><%= text_field_tag :dni, params[:dni], :class => "form-control" %></td>
 		<td><%= text_field_tag :alumno, params[:alumno], :class => "form-control" %></td>
 		<td><%= text_field_tag :fecha_acta, params[:fecha_acta], :class => "form-control" %></td>
 		<td><%= text_field_tag :seccion, params[:seccion], :class => "form-control" %></td>
@@ -27,6 +30,7 @@
 	</tr>
     <% @seguimientos.each do |seguimiento| %>
       <tr>
+		<td><%= seguimiento.alumno.dni %></td>
         <td><%= seguimiento.alumno.alumno %></td>
         <td><%= seguimiento.fecha_acta %></td>
         <td><%= seguimiento.seccion.seccion %></td>
@@ -36,7 +40,7 @@
         <td><%= link_to 'Editar', edit_seguimiento_path(seguimiento), class: 'btn btn-xs' %></td>
         <td><%= link_to 'Eliminar', seguimiento, method: :delete, data: { confirm: 'Está Seguro?' }, class: 'btn btn-xs' %></td>
       </tr>
-    <% end %>
+    <% end if @seguimientos.count != Seguimiento.all.count %>
   </tbody>
 </table>
 

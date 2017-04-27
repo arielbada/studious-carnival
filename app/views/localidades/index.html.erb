@@ -1,6 +1,7 @@
 
 <h1>Sedes Provinciales</h1>
-<h3><small><%= "La búsqueda devolvió #{@localidades.count} registros." if @localidades.count != Localidad.all.count %></small></h1>
+
+<h3><small><%= @localidades.count != Localidad.all.count ? "La búsqueda devolvió #{@localidades.count} registros." : "Buscar sobre un total de #{@localidades.count} registros." %></small></h3>
 
 <table class="table table-condensed table-hover">
   <thead>
@@ -34,7 +35,7 @@
         <td><%= link_to 'Editar', edit_localidad_path(localidad), class: 'btn btn-xs' %></td>
         <td><%= link_to 'Eliminar', localidad, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
       </tr>
-    <% end %>
+    <% end if @localidades.count != Localidad.all.count %>
   </tbody>
 </table>
 
