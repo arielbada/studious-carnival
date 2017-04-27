@@ -3,6 +3,7 @@
 
 <h3><small><%= @sedes.count != Sede.all.count ? "La búsqueda devolvió #{@sedes.count} registros." : "Buscar sobre un total de #{@sedes.count} registros." %></small></h3>
 
+<%= form_tag sedes_path, :method => 'get' do %>
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
@@ -15,7 +16,7 @@
   </thead>
 
   <tbody>
-    <tr><%= form_tag sedes_path, :method => 'get' do %>
+    <tr>
 		<td><%= text_field_tag :escuela, params[:escuela], :class => "form-control" %></td>
 		<td><%= text_field_tag :direccion, params[:direccion], :class => "form-control" %></td>
 		<td></td>
@@ -23,9 +24,8 @@
 		<td></td>
 		<td></td>		
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
-	    <% end %>
 	  </tr>
-  
+<% end %>
   
     <% @sedes.each do |sede| %>
       <tr>

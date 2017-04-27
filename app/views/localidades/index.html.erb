@@ -3,6 +3,7 @@
 
 <h3><small><%= @localidades.count != Localidad.all.count ? "La búsqueda devolvió #{@localidades.count} registros." : "Buscar sobre un total de #{@localidades.count} registros." %></small></h3>
 
+<%= form_tag localidades_path, :method => 'get' do %>
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
@@ -15,7 +16,7 @@
   </thead>
 
   <tbody>
-    <tr><%= form_tag localidades_path, :method => 'get' do %>
+    <tr>
 		<td><%= text_field_tag :localidad, params[:localidad], :class => "form-control" %></td>
 		<td><%= text_field_tag :region_educativa, params[:region_educativa], :class => "form-control" %></td>
 		<td><%= text_field_tag :nodo, params[:nodo], :class => "form-control" %></td>
@@ -23,8 +24,9 @@
 		<td></td>
 		<td></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
-	  <% end %>
 	</tr>
+<% end %>
+
     <% @localidades.each do |localidad| %>
       <tr>
         <td><%= localidad.localidad %></td>

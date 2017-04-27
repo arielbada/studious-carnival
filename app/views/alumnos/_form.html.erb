@@ -85,16 +85,22 @@
     <%= f.label :inscripcion_ficha, "Inscripción ficha" %>
     <%= f.check_box :inscripcion_ficha %>
   </div>
-
+  
   <div class="field">
-    <%= f.label :observacion %>
+    <%= f.label :comentario_inscripcion, "Comentario Inscripción" %>
+    <%= f.text_field :comentario_inscripcion %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :observacion, "Observación" %>
     <%= f.text_field :observacion %>
   </div>
   
   <div class="field">
-    <%= f.label :comentario_inscripcion %>
-    <%= f.text_field :comentario_inscripcion %>
+    <%= f.label :comentario %>
+    <%= f.text_field :comentario %>
   </div>
+
   
   <div class="actions">
     <%= f.submit %>

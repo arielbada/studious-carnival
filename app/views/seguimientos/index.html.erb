@@ -3,6 +3,7 @@
 
 <h3><small><%= @seguimientos.count != Seguimiento.all.count ? "La búsqueda devolvió #{@seguimientos.count} registros." : "Buscar sobre un total de #{@seguimientos.count} registros." %></small></h3>
 
+<%= form_tag seguimientos_path, :method => 'get' do %>
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
@@ -17,7 +18,7 @@
   </thead>
 
   <tbody>
-   <tr><%= form_tag seguimientos_path, :method => 'get' do %>
+   <tr>
 		<td><%= text_field_tag :dni, params[:dni], :class => "form-control" %></td>
 		<td><%= text_field_tag :alumno, params[:alumno], :class => "form-control" %></td>
 		<td><%= text_field_tag :fecha_acta, params[:fecha_acta], :class => "form-control" %></td>
@@ -26,8 +27,9 @@
 		<td></td>
 		<td colspan="2"><%= check_box_tag :cada_ultimo_registro, "true", params[:cada_ultimo_registro] ? true : params[:cada_ultimo_registro], :class => "checkbox" %><small>Sólo últimos registros</small></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
-	  <% end %>
 	</tr>
+<% end %>
+	
     <% @seguimientos.each do |seguimiento| %>
       <tr>
 		<td><%= seguimiento.alumno.dni %></td>

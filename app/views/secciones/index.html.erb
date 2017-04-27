@@ -2,6 +2,7 @@
 <h1>Secciones</h1>
 <h3><small><%= "La búsqueda devolvió #{@secciones.count} registros." if @secciones.count != Seccion.all.count %></small></h1>
 
+<%= form_tag secciones_path, :method => 'get' do %>
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
@@ -13,14 +14,14 @@
   </thead>
 
   <tbody>
-   <tr><%= form_tag secciones_path, :method => 'get' do %>
+   <tr>
 		<td><%= text_field_tag :seccion, params[:seccion], :class => "form-control" %></td>		
 		<td></td>
 		<td></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
-	  <% end %>
 	</tr>
-  
+<% end %>
+
     <% @secciones.each do |seccion| %>
       <tr>
         <td><%= seccion.seccion %></td>
