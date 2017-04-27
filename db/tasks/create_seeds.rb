@@ -99,7 +99,7 @@ def generate_seed_code(table_name, entity_name, parsed_content)
 				reference_attribute = key.match(/\.(.+?)$/)[1]
 				reference_entity = key.match(/(.+?)\./)[1].capitalize
 				query_reference_id = "#{reference_entity}.where('lower(#{reference_attribute.downcase}) = ?', '#{value}'.downcase).first.id"
-				query += "#{reference_attribute}: #{query_reference_id}, "	#reference field
+				query += "#{reference_entity.downcase+"_id"}: #{query_reference_id}, "	#reference field
 				reference_values << value
 			else
 				query += "#{key}: \"#{value}\", "	# normal field
