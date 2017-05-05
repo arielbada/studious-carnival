@@ -29,7 +29,11 @@ end
 					value = sanitizeValue(val)	#added boolean support
 					if validateParams(key) then
 						if value == true || value == false	# is boolean
-							obj = obj.where(key + " = " + val)
+							if value == false
+								obj = obj.where("#{key} = #{val} or #{key} IS NULL")
+							else
+								obj = obj.where("#{key} = #{val}")
+							end
 						else
 							obj = obj.where(key + " ilike ?", value)
 						end
@@ -39,12 +43,17 @@ end
 								#obj = obj.where("EXISTS (SELECT * FROM localidades l, alumnos a WHERE l.id = a.localidad_id and l.localidad like '%#{val}%')")
 								obj = obj.includes(key).where(key + " ilike ?", value).references(key)	# http://stackoverflow.com/questions/18234602/rails-active-record-querying-association-with-exists
 							else
-								obj = obj.includes(key).where("nombre ilike '%#{val}%' OR apellido ilike '%#{val}%'")
+								obj = obj.includes(key).where("nombre ilike '%#{val}%' OR apellido ilike '%#{val}%'").references(key)
 							end							
-						end						
+						end
 						if key == "legajo"
-							value ? cond = "AND" : cond = "OR"		# if legajo true, condition is for all items true, if false, at least an item should be false														
-							obj = obj.where("inscripcion_ficha = ? #{cond} inscripcion_foto = ? #{cond} inscripcion_partida = ? #{cond} inscripcion_certificado = ?", value, value, value, value)
+							if value	# if legajo true, condition is for all items true, if false, at least an item should be false
+								cond = "AND"
+								obj = obj.where("inscripcion_ficha = ? #{cond} inscripcion_foto = ? #{cond} inscripcion_partida = ? #{cond} inscripcion_certificado = ?", value, value, value, value)
+							else
+								cond = "OR"
+								obj = obj.where("inscripcion_ficha = ? #{cond} inscripcion_foto = ? #{cond} inscripcion_partida = ? #{cond} inscripcion_certificado = ? #{cond} inscripcion_ficha IS NULL #{cond} inscripcion_foto IS NULL #{cond} inscripcion_partida IS NULL #{cond} inscripcion_certificado IS NULL", value, value, value, value)
+							end
 						end
 						if key == "cada_ultimo_registro"							
 							obj = obj.group("alumno_id").having("fecha_acta = MAX(fecha_acta)")
