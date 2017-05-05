@@ -40,20 +40,21 @@ end
 					else
 						if validateParamsSub(key) then
 							if key != "alumno"	#improve with attr_accessor option
-								#obj = obj.where("EXISTS (SELECT * FROM localidades l, alumnos a WHERE l.id = a.localidad_id and l.localidad like '%#{val}%')")
 								obj = obj.includes(key).where(key + " ilike ?", value).references(key)	# http://stackoverflow.com/questions/18234602/rails-active-record-querying-association-with-exists
 							else
 								obj = obj.includes(key).where("nombre ilike '%#{val}%' OR apellido ilike '%#{val}%'").references(key)
 							end							
 						end
 						if key == "legajo"
-							if value	# if legajo true, condition is for all items true, if false, at least an item should be false
-								cond = "AND"
-								obj = obj.where("inscripcion_ficha = ? #{cond} inscripcion_foto = ? #{cond} inscripcion_partida = ? #{cond} inscripcion_certificado = ?", value, value, value, value)
-							else
-								cond = "OR"
-								obj = obj.where("inscripcion_ficha = ? #{cond} inscripcion_foto = ? #{cond} inscripcion_partida = ? #{cond} inscripcion_certificado = ? #{cond} inscripcion_ficha IS NULL #{cond} inscripcion_foto IS NULL #{cond} inscripcion_partida IS NULL #{cond} inscripcion_certificado IS NULL", value, value, value, value)
+							legajo = ["inscripcion_ficha", "inscripcion_foto", "inscripcion_partida", "inscripcion_certificado"]
+							value ? cond = "AND" : cond = "OR"
+							query = ""
+							legajo.each do |leg|
+								query += "#{leg} = #{value} #{cond} "
+								query += "#{leg} IS NULL #{cond} " if !value 
 							end
+							query = query.chomp(" #{cond} ")
+							obj = obj.where(query)							
 						end
 						if key == "cada_ultimo_registro"							
 							obj = obj.group("alumno_id").having("fecha_acta = MAX(fecha_acta)")
