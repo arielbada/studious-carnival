@@ -45,30 +45,26 @@
         <td><%= alumno.localidad.localidad %></td>
         <td><span class="btn" style="cursor: not-allowed; pointer-events: none"><span class='glyphicon <%= alumno.sigae ? "glyphicon-ok" : "glyphicon-remove"  %>'/></span></td>
 		<td>
-		  <!-- Button trigger modal -->
-			<button class="btn btn-link" data-toggle="modal" data-target="#alumno-<%= alumno.id %>">
+		  <!-- Button trigger modal -->		  
+			<a class='btn btn-link' data-toggle="popover" data-target="#alumno-<%= alumno.id %>">
 				<span class='glyphicon <%= alumno.inscripcion_certificado && alumno.inscripcion_foto && alumno.inscripcion_partida && alumno.inscripcion_ficha ? "glyphicon-ok" : "glyphicon-remove"  %>'/>
-			</button>
+			</a>
 		  <!-- Modal -->
-			<div class="modal fade" id="alumno-<%= alumno.id %>" tabindex="-1" role="dialog" aria-labelledby="alumno-<%= alumno.id %>" aria-hidden="true">
-				<div class="modal-dialog modal-sm">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title" id="alumno-<%= alumno.id %>">Estado de la Inscripción: <br><%= alumno.nombre %> <%= alumno.apellido %></h4>
-						</div>
-						<div class="modal-body">
-							<table class="table-condensed">
-								<tr><td>Ficha</td><td><span class='glyphicon <%= alumno.inscripcion_ficha ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
-								<tr><td>Fotocopia DNI</td><td><span class='glyphicon <%= alumno.inscripcion_foto ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
-								<tr><td>Partida</td><td><span class='glyphicon <%= alumno.inscripcion_partida ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
-								<tr><td>Certificado</td><td><span class='glyphicon <%= alumno.inscripcion_certificado ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>								
-							</table>
-						</div>
-						<div class="modal-footer">
-							<%= link_to 'Editar', edit_alumno_path(alumno), class: 'btn' %>
-							<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-						</div>
-					</div>	
+			<div class="hide" id="alumno-<%= alumno.id %>" aria-hidden="true">				
+				<div>
+					<div class="modal-header">
+						<h4 class="modal-title" id="alumno-<%= alumno.id %>">Estado de la Inscripción: <br><%= alumno.nombre %> <%= alumno.apellido %></h4>
+					</div>
+					<div class="modal-body">
+						<table class="table-condensed">
+							<tr><td>Ficha</td><td><span class='glyphicon <%= alumno.inscripcion_ficha ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
+							<tr><td>Fotocopia DNI</td><td><span class='glyphicon <%= alumno.inscripcion_foto ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
+							<tr><td>Partida</td><td><span class='glyphicon <%= alumno.inscripcion_partida ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
+							<tr><td>Certificado</td><td><span class='glyphicon <%= alumno.inscripcion_certificado ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>								
+						</table>
+					</div>
+					<div class="modal-footer">
+					</div>
 				</div>
 			</div>
 		</td>
