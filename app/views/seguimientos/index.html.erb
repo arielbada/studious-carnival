@@ -3,7 +3,7 @@
 
 <h3><small><%= @seguimientos.count != Seguimiento.all.count ? "La búsqueda devolvió #{@seguimientos.count} registros." : "Buscar sobre un total de #{@seguimientos.count} registros." %></small></h3>
 
-<%= form_tag seguimientos_path, :method => 'get' do %>
+<%= form_tag seguimientos_path, :class => "form-inline", :method => 'get' do %>
 <table class="table table-condensed table-hover">
   <thead>
     <tr>
@@ -21,7 +21,7 @@
    <tr>
 		<td><%= text_field_tag :dni, params[:dni], :class => "form-control" %></td>
 		<td><%= text_field_tag :alumno, params[:alumno], :class => "form-control" %></td>
-		<td><%= text_field_tag :fecha_acta, params[:fecha_acta], :class => "form-control" %></td>
+		<td><%= select_tag :fecha_acta_condition, options_for_select(["=", ">", "<"], params[:fecha_acta_condition]), :class => "form-control" %><%= text_field_tag :fecha_acta, params[:fecha_acta], :class => "form-control" %></td>
 		<td><%= text_field_tag :seccion, params[:seccion], :class => "form-control" %></td>
 		<td><%= select_tag :estado, options_for_select(["", "Aprobado", "Regular", "Recursa", "Abandono"], params[:estado]), :class => "form-control" %></td>				
 		<td></td>

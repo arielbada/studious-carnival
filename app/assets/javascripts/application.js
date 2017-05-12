@@ -15,7 +15,8 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
-//= require tether.min.js
+//= require tether.min
+
 
 $(function(){	//activates popover
   $('[data-toggle="popover"]').popover({ 
