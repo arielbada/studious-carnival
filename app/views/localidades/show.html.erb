@@ -1,4 +1,4 @@
-<h1>Mostrar Sede Provincial</h1>
+<h1>Mostrar Localidad</h1>
 
 <p>
   <strong>Localidad:</strong>
@@ -18,6 +18,11 @@
 <p>
   <strong>Departamento:</strong>
   <%= @localidad.departamento %>
+</p>
+
+<p>
+  <strong>Es sede provincial:</strong>
+  <%= check_box_tag @localidad.es_sede_provincial, @localidad.es_sede_provincial, @localidad.es_sede_provincial, {disabled: true} %>
 </p>
 
 <%= link_to 'Editar', edit_localidad_path(@localidad) %> |
