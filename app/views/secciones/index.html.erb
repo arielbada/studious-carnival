@@ -9,6 +9,7 @@
       <th>Sección</th>
 	  <th>Fecha Inicio</th>
 	  <th>Fecha Finalización</th>
+	  <th>ID Plataforma</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
 		<td><%= text_field_tag :seccion, params[:seccion], :class => "form-control" %></td>		
 		<td></td>
 		<td></td>
+		<td><%= text_field_tag :id_plataforma, params[:id_plataforma], :class => "form-control" %></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
 	</tr>
 <% end %>
@@ -27,6 +29,7 @@
         <td><%= seccion.seccion %></td>
         <td><%= seccion.fecha_inicio %></td>
         <td><%= seccion.fecha_finalizacion %></td>
+		<td><%= seccion.id_plataforma %></td>
         <td><%= link_to 'Editar', edit_seccion_path(seccion), class: 'btn btn-xs' %></td>
         <td><%= link_to 'Eliminar', seccion, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-xs' %></td>
       </tr>

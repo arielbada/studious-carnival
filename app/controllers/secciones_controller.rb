@@ -70,6 +70,6 @@ class SeccionesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seccion_params
-      params.require(:seccion).permit(:seccion, :modulo, :cohorte, :aula, :fecha_inicio, :fecha_finalizacion)
+      params.require(:seccion).permit(:seccion, :modulo, :cohorte, :aula, :fecha_inicio, :fecha_finalizacion, :id_plataforma)
     end
 end
