@@ -22,7 +22,7 @@
 		<td><%= text_field_tag :region_educativa, params[:region_educativa], :class => "form-control" %></td>
 		<td><%= text_field_tag :nodo, params[:nodo], :class => "form-control" %></td>
 		<td><%= text_field_tag :departamento, params[:departamento], :class => "form-control" %></td>
-		<td><%= select_tag :es_sede_provincial, options_for_select([["", ""], ["✔", "true"], ["✘", "false"]], params[:es_sede_provincial]), :class => "form-control" %></td>
+		<td><%= select_tag :es_sede_provincial, options_for_select([["", ""], ["☑", "true"], ["☐", "false"]], params[:es_sede_provincial]), :class => "form-control" %></td>
 		<td></td>
 		<td></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
@@ -35,7 +35,7 @@
         <td><%= localidad.region_educativa %></td>
         <td><%= localidad.nodo %></td>
 		<td><%= localidad.departamento %></td>
-		<td><span class="btn" style="cursor: not-allowed; pointer-events: none"><span class='glyphicon <%= localidad.es_sede_provincial ? "glyphicon-ok" : "glyphicon-remove"  %>'/></span></td>
+		<td><span class="btn" style="cursor: not-allowed; pointer-events: none"><span class='glyphicon <%= localidad.es_sede_provincial ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></span></td>
         <td><%= link_to 'Mostrar', localidad, class: 'btn btn-xs'%></td>
         <td><%= link_to 'Editar', edit_localidad_path(localidad), class: 'btn btn-xs' %></td>
         <td><%= link_to 'Eliminar', localidad, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>

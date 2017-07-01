@@ -27,8 +27,8 @@
 		<td><%= text_field_tag :apellido, params[:apellido], :class => "form-control" %></td>
 		<td><%= select_tag :sexo, options_for_select([["", ""], ["M", "M"], ["F", "F"]], params[:sexo]), :class => "form-control" %></td>
 		<td><%= text_field_tag :localidad, params[:localidad], :class => "form-control" %></td>
-		<td><%= select_tag :sigae, options_for_select([["", ""], ["✔", "true"], ["✘", "false"]], params[:sigae]), :class => "form-control" %></td>
-		<td><%= select_tag :legajo, options_for_select([["", ""], ["✔", "true"], ["✘", "false"]], params[:legajo]), :class => "form-control" %></td>
+		<td><%= select_tag :sigae, options_for_select([["", ""], ["☑", "true"], ["☐", "false"]], params[:sigae]), :class => "form-control" %></td>
+		<td><%= select_tag :legajo, options_for_select([["", ""], ["☑", "true"], ["☐", "false"]], params[:legajo]), :class => "form-control" %></td>
 		<td><%= text_field_tag :observacion, params[:observacion], :class => "form-control" %></td>
 		<td><%= text_field_tag :comentario, params[:comentario], :class => "form-control" %></td>
 		<td colspan="2"></td>
@@ -43,11 +43,11 @@
         <td><%= alumno.apellido %></td>
         <td><%= alumno.sexo %></td>
         <td><%= alumno.localidad.localidad %></td>
-        <td><span class="btn" style="cursor: not-allowed; pointer-events: none"><span class='glyphicon <%= alumno.sigae ? "glyphicon-ok" : "glyphicon-remove"  %>'/></span></td>
+        <td><span class="btn" style="cursor: not-allowed; pointer-events: none"><span class='glyphicon <%= alumno.sigae ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></span></td>
 		<td>
 		  <!-- Button trigger modal -->		  
 			<a class='btn btn-link' data-toggle="popover" data-target="#alumno-<%= alumno.id %>">
-				<span class='glyphicon <%= alumno.inscripcion_certificado && alumno.inscripcion_foto && alumno.inscripcion_partida && alumno.inscripcion_ficha ? "glyphicon-ok" : "glyphicon-remove"  %>'/>
+				<span class='glyphicon <%= alumno.inscripcion_certificado && alumno.inscripcion_foto && alumno.inscripcion_partida && alumno.inscripcion_ficha ? "glyphicon-checked" : "glyphicon-unchecked"  %>'/>
 			</a>
 		  <!-- Modal -->
 			<div class="hide" id="alumno-<%= alumno.id %>" aria-hidden="true">				
@@ -57,10 +57,11 @@
 					</div>
 					<div class="modal-body">
 						<table class="table-condensed">
-							<tr><td>Ficha</td><td><span class='glyphicon <%= alumno.inscripcion_ficha ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
-							<tr><td>Fotocopia DNI</td><td><span class='glyphicon <%= alumno.inscripcion_foto ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
-							<tr><td>Partida</td><td><span class='glyphicon <%= alumno.inscripcion_partida ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>
-							<tr><td>Certificado</td><td><span class='glyphicon <%= alumno.inscripcion_certificado ? "glyphicon-ok" : "glyphicon-remove"  %>'/></td></tr>								
+							<tr><td>Ficha</td><td><span class='glyphicon <%= alumno.inscripcion_ficha ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></td></tr>
+							<tr><td>Fotocopia DNI</td><td><span class='glyphicon <%= alumno.inscripcion_foto ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></td></tr>
+							<tr><td>Partida</td><td><span class='glyphicon <%= alumno.inscripcion_partida ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></td></tr>
+							<tr><td>Certificado</td><td><span class='glyphicon <%= alumno.inscripcion_certificado ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></td></tr>
+							<tr><td>Comentario</td><td><span class=''><%= alumno.comentario_inscripcion %></span></td></tr>			
 						</table>
 					</div>
 					<div class="modal-footer">
