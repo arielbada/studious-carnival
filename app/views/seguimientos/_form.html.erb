@@ -28,12 +28,12 @@
 
   <div class="field">
     <%= f.label :estado %>
-    <%= f.select :estado, options_for_select(["Aprobado", "Regular", "Recursa", "Abandono"]) %>
+    <%= f.select :estado, options_for_select(["Aprobado", "Regular", "Recursa", "Abandono"]), :include_blank => true %>
   </div>
 
   <div class="field">
     <%= f.label :calificacion, "Calificación" %>
-    <%= f.select :calificacion, options_for_select([0, 7, 8, 9, 10]) %>
+    <%= f.select :calificacion, options_for_select([0, 7, 8, 9, 10]), :include_blank => true %>
   </div>
 
   <div class="actions">

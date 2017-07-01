@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170701185128) do
+ActiveRecord::Schema.define(version: 20170701192852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,9 @@ ActiveRecord::Schema.define(version: 20170701185128) do
     t.string   "comentario_inscripcion"
     t.string   "sexo"
     t.string   "observacion"
+    t.integer  "sede_provincial_id"
     t.index ["localidad_id"], name: "index_alumnos_on_localidad_id", using: :btree
+    t.index ["sede_provincial_id"], name: "index_alumnos_on_sede_provincial_id", using: :btree
   end
 
   create_table "localidades", force: :cascade do |t|
