@@ -13,5 +13,7 @@ module Alumnos4
     # -- all .rb files in that directory are automatically loaded.	
 	config.i18n.default_locale = :es
 	I18n.enforce_available_locales = true
+	# Configure the default encoding used in templates for Ruby 1.9.
+	config.encoding = "utf-8"
   end
 end

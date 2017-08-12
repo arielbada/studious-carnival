@@ -1,0 +1,23 @@
+<h1>Importación de Estudiantes</h1>
+
+<p>Un Excel (.xls) puede ser usado para importar registros de Estudiantes. La primera fila debería ser el nombre de columna.</p>
+
+<p>Si el <strong>DNI</strong> provisto ya existe, actualizará el registro coincidente en vez de crear uno nuevo.</p>
+
+<%= form_for @alumno_import do |f| %>
+  <% if @alumno_import.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@alumno_import.errors.count, "error") %> impidió que esta importación se complete:</h2>
+      <ul>
+      <% @alumno_import.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.file_field :file %>
+  </div>
+  <div class="buttons"><%= f.submit "Importar" %></div>
+<% end %>

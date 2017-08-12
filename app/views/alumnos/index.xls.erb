@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">DNI</Data></Cell>
+        <Cell><Data ss:Type="String">Nombre</Data></Cell>
+        <Cell><Data ss:Type="String">Apellido</Data></Cell>
+        <Cell><Data ss:Type="String">Sexo</Data></Cell>
+        <Cell><Data ss:Type="String">Localidad.Localidad</Data></Cell>
+        <Cell><Data ss:Type="String">Domicilio</Data></Cell>
+        <Cell><Data ss:Type="String">Telefono Fijo</Data></Cell>
+        <Cell><Data ss:Type="String">Telefono Celular</Data></Cell>
+        <Cell><Data ss:Type="String">Correo</Data></Cell>
+        <Cell><Data ss:Type="String">Fecha Nacimiento</Data></Cell>
+        <Cell><Data ss:Type="String">SIGAE</Data></Cell>
+        <Cell><Data ss:Type="String">Inscripcion Certificado</Data></Cell>
+        <Cell><Data ss:Type="String">Inscripcion Foto</Data></Cell>
+        <Cell><Data ss:Type="String">Inscripcion Partida</Data></Cell>
+        <Cell><Data ss:Type="String">Inscripcion Ficha</Data></Cell>
+        <Cell><Data ss:Type="String">Comentario Inscripcion</Data></Cell>
+        <Cell><Data ss:Type="String">Observacion (Glosario)</Data></Cell>
+        <Cell><Data ss:Type="String">Comentario</Data></Cell>
+        <Cell><Data ss:Type="String">Sede_Provincial.Localidad</Data></Cell>
+      </Row>
+    <% @products.each do |product| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= alumno.dni %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= alumno.nombre %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= alumno.apellido %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.sexo %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.localidad.localidad %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.domicilio %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.telefono_fijo %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.telefono_celular %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.correo %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.fecha_nacimiento %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.sigae %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.inscripcion_certificado %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.inscripcion_foto %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.inscripcion_partida %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.inscripcion_ficha %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.comentario_inscripcion %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.observacion %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= alumno.sede_provincial.localidad %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

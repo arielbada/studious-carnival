@@ -2,6 +2,7 @@
 <h1>Estudiantes</h1>
 
 <h3><small><%= @alumnos.count != Alumno.all.count ? "La búsqueda devolvió #{@alumnos.count} registros." : "Buscar sobre un total de #{@alumnos.count} registros." %></small></h3>
+<p>  <%= link_to "Excel", alumnos_path(format: "xls") %> </p>
 
 <%= form_tag alumnos_path, :method => 'get' do %>
 <table class="table table-condensed table-hover">
@@ -86,3 +87,4 @@
 <br>
 
 <%= link_to 'Nuevo Estudiante', new_alumno_path, class: 'btn' %>
+<%= link_to "Importar Estudiantes", new_alumno_import_path, class: 'btn' %>

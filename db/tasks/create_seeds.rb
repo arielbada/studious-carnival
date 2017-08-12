@@ -96,9 +96,10 @@ def generate_seed_code(table_name, entity_name, parsed_content)
 		rescue_string = ""
 		row.each do |key, value|
 			if key.match(/\w\.\w/)
-				reference_attribute = key.match(/\.(.+?)$/)[1]
 				reference_entity = key.match(/(.+?)\./)[1].capitalize
+				reference_attribute = key.match(/\.(.+?)$/)[1]				
 				query_reference_id = "#{reference_entity}.where('lower(#{reference_attribute.downcase}) = ?', '#{value}'.downcase).first.id"
+				query_reference_id = "#{reference_attribute.capitalize}.where('lower(#{reference_attribute.downcase}) = ?', '#{value}'.downcase).first.id" if reference_attribute.downcase == "localidad"
 				query += "#{reference_entity.downcase+"_id"}: #{query_reference_id}, "	#reference field
 				reference_values << value
 			else

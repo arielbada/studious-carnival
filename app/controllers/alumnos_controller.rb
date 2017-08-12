@@ -1,12 +1,14 @@
 class AlumnosController < ApplicationController
   before_action :set_alumno, only: [:show, :edit, :update, :destroy]
 
-  # GET /alumnos
-  # GET /alumnos.json
   def index
     @alumnos = Alumno.all
 	#@alumnos = Alumno.filter(params.slice(:nombre, :apellido))
 	@alumnos = Alumno.filter(params, @alumnos)
+	respond_to do |format|
+		format.html
+		format.xls { send_data @alumnos }
+	end
   end
 
   # GET /alumnos/1
@@ -30,7 +32,7 @@ class AlumnosController < ApplicationController
 
     respond_to do |format|
       if @alumno.save
-        format.html { redirect_to @alumno, notice: 'Alumno was successfully created.' }
+        format.html { redirect_to @alumno, notice: 'Estudiante dado de alta satisfactoriamente.' }
         format.json { render :show, status: :created, location: @alumno }
       else
         format.html { render :new }
@@ -44,7 +46,7 @@ class AlumnosController < ApplicationController
   def update
     respond_to do |format|
       if @alumno.update(alumno_params)
-        format.html { redirect_to @alumno, notice: 'Alumno was successfully updated.' }
+        format.html { redirect_to @alumno, notice: 'Estudiante actualizafo satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @alumno }
       else
         format.html { render :edit }
@@ -58,7 +60,7 @@ class AlumnosController < ApplicationController
   def destroy
     @alumno.destroy
     respond_to do |format|
-      format.html { redirect_to alumnos_url, notice: 'Alumno was successfully destroyed.' }
+      format.html { redirect_to alumnos_url, notice: 'El registro del estudiante ha sido borrado.' }
       format.json { head :no_content }
     end
   end

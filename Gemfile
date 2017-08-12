@@ -52,5 +52,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Use Devise to login users
 gem 'devise', '~> 4.2.0'
 
-# Use query_report for reports
-#gem 'query_report', '~> 1.0.4'
+# Use roo gem for reading Excel files
+gem 'roo'
