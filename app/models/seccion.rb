@@ -1,5 +1,6 @@
 class Seccion < ApplicationRecord
     include Filterable
+	include Validaciones
 	has_many :seguimiento
 	attr_accessor  :cohorte, :modulo, :aula
 	

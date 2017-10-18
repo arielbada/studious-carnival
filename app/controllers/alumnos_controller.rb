@@ -46,7 +46,7 @@ class AlumnosController < ApplicationController
   def update
     respond_to do |format|
       if @alumno.update(alumno_params)
-        format.html { redirect_to @alumno, notice: 'Estudiante actualizafo satisfactoriamente.' }
+        format.html { redirect_to @alumno, notice: 'Estudiante actualizado satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @alumno }
       else
         format.html { render :edit }

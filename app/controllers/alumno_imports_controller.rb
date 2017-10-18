@@ -6,7 +6,7 @@ class AlumnoImportsController < ApplicationController
   def create
     @alumno_import = AlumnoImport.new(params[:alumno_import])
     if @alumno_import.save
-      redirect_to root_url, notice: "Estudiantes importados exitosamente."
+      redirect_to :alumnos, notice: "Alumnos importados exitosamente."
     else
       render :new
     end

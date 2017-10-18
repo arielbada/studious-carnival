@@ -1,10 +1,10 @@
-class AlumnoImport
+class SeguimientoImport
   extend ActiveModel::Naming
   include ActiveModel::Conversion
   include ActiveModel::Validations
   include Excel
   include Validaciones
-
+  
   attr_accessor :file
 
   def initialize(attributes = {})
@@ -19,10 +19,10 @@ class AlumnoImport
     if imported_data.map(&:valid?).all?
       imported_data.each(&:save!)
       true
-    else
+    else	
       imported_data.each_with_index do |data, index|
         data.errors.full_messages.each do |message|
-          errors.add :base, "Fila #{index+2}: #{message}: #{@spreadsheet[index].map{ |k,v| "#{k}: \"#{v}\"" }.join('; ')}"
+          errors.add :base, "Fila #{index+1}: #{message}: #{@spreadsheet[index].map{ |k,v| "#{k}: \"#{v}\"" }.join('; ')}"
         end
       end
       false
@@ -35,8 +35,8 @@ class AlumnoImport
 
   def load_imported_data
     @model, @spreadsheet = open_spreadsheet
-	@spreadsheet.map do |row|				#	{:dni=>16469312, :nombre=>"Francisco Alfredo", :apellido=>"Aballay", :sexo=>nil, :domicilio=>nil,...
-		item = @model.find_by(dni: row[:dni]) || @model.new
+	@spreadsheet.map do |row|				# row:	[{:alumno_id=>59285, :seccion_id=>1151, :estado=>nil, :calificacion=>7}, {:alumno_id...
+		item = @model.find_by(alumno_id: row[:alumno_id], fecha_acta: row[:fecha_acta], seccion_id: row[:seccion_id]) || @model.new
 		item.attributes = row.to_hash.slice( *@model.column_names.map { |a| a.to_sym } )
 
 		item

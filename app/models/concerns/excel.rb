@@ -8,14 +8,29 @@ module Excel
 			@excel = Roo::Spreadsheet.open(file_path, extension: type)
 		end
 		
-		def parse_spreadsheet		
-			parsed_content = []			
-			open_spreadsheet.each(get_headers_as_keys(open_spreadsheet.row(2	))) do |row_hash|
-				parsed_content << row_hash
+		def parse_spreadsheet
+			parsed_content = []
+			spreadsheet = open_spreadsheet
+
+			if @model != Seguimiento
+				spreadsheet.each(get_headers_as_keys(spreadsheet.row(2))) do |row_hash|
+					parsed_content << row_hash
+				end
+				parsed_content.shift
+				parsed_content.map!{ |row| get_ids_from_relations(row) }
+			else
+				fecha_acta = spreadsheet.cell(5, 6).to_date				
+				seccion = spreadsheet.cell(6, 6).to_s
+
+				if seccion_id = validate_seccion(seccion)
+					spreadsheet.parse(header_search: ["DNI", "Condición", "Calificación"]).each do |row_hash|						
+						if row_hash["DNI"] && alumno_id = validate_alumno(row_hash["DNI"].to_i)							
+							parsed_content << {alumno_id: alumno_id, fecha_acta: fecha_acta, seccion_id: seccion_id, estado: row_hash["Condición"], calificacion: row_hash["Calificación"]}
+						end
+					end				
+				end
 			end
-			parsed_content.shift
-			parsed_content.map!{ |row| get_ids_from_relations(row) }
-			
+		
 			return @model, parsed_content	# Alumno,	[{:dni=>16469312, :nombre=>"Franci...
 		end
 	
@@ -43,9 +58,61 @@ module Excel
 			return hash
 		end
 
+		def validate_seccion(seccion)
+
+				if cohorte = seccion.match(/(C\d+)/i)
+					cohorte = cohorte[1]
+					cohorte.sub!(/C(\d)$/i, 'C0\1')
+				else
+					raise "Cohorte no encontrada en archivo de importación: #{seccion}"
+				end
+				
+				if modulo = seccion.match(/(M\d+)/i)
+					modulo = modulo[1]
+					modulo.sub!(/M\d$/i, 'M0\1')
+				else
+					raise "Módulo no encontrado en archivo de importación: #{seccion}"
+				end
+				
+				if aula = seccion.match(/(\d+)$/)
+					aula = aula[1]
+					aula.sub!(/(.+)/i, 'A\1').sub!(/^(\d)$/, '0\1')
+				else
+					raise "Aula no encontrado en archivo de importación: #{seccion}"
+				end
+				seccion = cohorte + modulo + aula
+				seccion_id = Seccion.find_by(seccion: seccion).id
+				
+				if seccion_id
+					return seccion_id.to_i
+				else
+					return false
+				end			
+		end
+		
+		def validate_alumno(dni)
+			if dni.to_s.match(/\d+/)
+				alumno_id = Alumno.find_by(dni: dni)
+				if alumno_id
+					return alumno_id.id
+				else
+					raise "Alumno no válido, DNI: #{dni.to_s}"
+				end
+			else
+				raise "Formato no válido de DNI: #{dni.to_s}"
+				return false
+			end
+		end
+		
 		def open_spreadsheet
-			@model = @excel.sheet(0).cell(1,1).capitalize.constantize
-			raise "Tabla no está presente o nombre erróneo en celda A1 #{@model}" if !@model
+			if @excel.sheet(0).cell(1,1).to_s != ''
+				@model = @excel.sheet(0).cell(1,1).capitalize
+			elsif @excel.sheet(0).cell(10,2).to_s.in?(['Nº', 'N°'])
+				@model = "Seguimiento"
+			end
+			raise "Tabla no presente o nombre erróneo de tabla en 'A1' #{@model}" if !@model
+			@model = @model.constantize
+			
 			return @excel.sheet(0)
 		end
 		

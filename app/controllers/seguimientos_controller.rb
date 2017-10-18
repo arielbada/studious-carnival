@@ -1,9 +1,6 @@
 class SeguimientosController < ApplicationController
   before_action :set_seguimiento, only: [:show, :edit, :update, :destroy]
-  #before_action :set_seguimiento, only: [:show, :update, :destroy]
 
-  # GET /seguimientos
-  # GET /seguimientos.json
   def index
     @seguimientos = Seguimiento.all
 	@seguimientos = Seguimiento.filter(params, @seguimientos)
@@ -31,7 +28,7 @@ class SeguimientosController < ApplicationController
 
     respond_to do |format|
       if @seguimiento.save
-        format.html { redirect_to @seguimiento, notice: 'Seguimiento was successfully created.' }
+        format.html { redirect_to @seguimiento, notice: 'Seguimiento dado de alta satisfactoriamente.' }
         format.json { render :show, status: :created, location: @seguimiento }
       else
         format.html { render :new }
@@ -45,7 +42,7 @@ class SeguimientosController < ApplicationController
   def update
     respond_to do |format|
       if @seguimiento.update(seguimiento_params)
-        format.html { redirect_to @seguimiento, notice: 'Seguimiento was successfully updated.' }
+        format.html { redirect_to @seguimiento, notice: 'Seguimiento actualizado satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @seguimiento }
       else
         format.html { render :edit }
@@ -59,7 +56,7 @@ class SeguimientosController < ApplicationController
   def destroy
     @seguimiento.destroy
     respond_to do |format|
-      format.html { redirect_to seguimientos_url, notice: 'Seguimiento was successfully destroyed.' }
+      format.html { redirect_to seguimientos_url, notice: 'El registro de Seguimiento fue borrado.' }
       format.json { head :no_content }
     end
   end

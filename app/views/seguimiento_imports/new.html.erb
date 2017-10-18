@@ -1,0 +1,23 @@
+<h1>Importación de Actas</h1>
+
+<p>Un Excel (.xls) puede ser usado para importar Actas.</p><p>La celda B11 deberá contener el número uno ("1") correspondiente a la linea del primer registro</p>
+
+<p>Si la <strong>Fecha</strong> y <strong>Sección</strong> provistos ya existen, actualizará el registro coincidente en vez de crear uno nuevo.</p>
+
+<%= form_for @seguimiento_import do |f| %>
+  <% if @seguimiento_import.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@seguimiento_import.errors.count, "error") %> impidió que esta importación se complete:</h2>
+      <ul>
+      <% @seguimiento_import.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.file_field :file %>
+  </div>
+  <div class="buttons"><%= f.submit "Importar" %></div>
+<% end %>
