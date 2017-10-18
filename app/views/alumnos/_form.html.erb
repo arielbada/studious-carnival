@@ -33,12 +33,12 @@
 
   <div class="field">
     <%= f.label :localidad_id %>
-    <%= f.select :localidad_id, options_for_select(Localidad.all.map{ |l| [l.localidad, l.id] }, alumno[:localidad_id]) %>
+    <%= f.select :localidad_id, options_for_select(Localidad.all.map{ |l| [l.localidad, l.id] }, alumno[:localidad_id]), :include_blank => true %>
   </div>
   
   <div class="field">
-    <%= f.label :sede_provincial_id %>
-    <%= f.select :sede_provincial_id, options_for_select(Localidad.where(:es_sede_provincial =>  true).map{ |l| [l.localidad, l.id] }, alumno[:sede_provincial_id]), :include_blank => true %>
+    <%= f.label :sede_id %>
+    <%= f.select :sede_id, options_for_select(Sede.all.map{ |s| [s.escuela + ", " + s.localidad.localidad, s.id] }, alumno[:sede_id]), :include_blank => true %>
   </div>
 
   <div class="field">

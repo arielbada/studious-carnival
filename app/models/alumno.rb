@@ -1,7 +1,7 @@
 class Alumno < ApplicationRecord
 	include Filterable
-	belongs_to :localidad, :class_name => "Localidad", :foreign_key => 'localidad_id'
-	belongs_to :sede_provincial, :class_name => "Localidad", :foreign_key => 'sede_provincial_id'
+	belongs_to :localidad
+	belongs_to :sede, optional: true
 	has_many :seguimiento
 
 	attr_reader :alumno

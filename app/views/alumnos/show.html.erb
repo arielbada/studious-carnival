@@ -26,8 +26,8 @@
 </p>
 
 <p>
-  <strong>Sede Provincial:</strong>
-  <%= @alumno.sede_provincial.localidad if @alumno.sede_provincial %>
+  <strong>Sede:</strong>
+  <%= "#{@alumno.sede.escuela}, #{@alumno.sede.localidad.localidad}" if @alumno.sede %>
 </p>
 
 <p>

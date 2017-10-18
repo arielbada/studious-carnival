@@ -13,7 +13,7 @@
       <th>Apellido</th>
       <th>Sexo</th>
       <th>Localidad</th>
-      <th>Sede Provincial</th>	  
+      <th>Sede</th>	  
       <th>SIGAE</th>
       <th>Legajo</th>
       <th>Observación</th>
@@ -29,7 +29,7 @@
 		<td><%= text_field_tag :apellido, params[:apellido], :class => "form-control" %></td>
 		<td><%= select_tag :sexo, options_for_select([["", ""], ["M", "M"], ["F", "F"]], params[:sexo]), :class => "form-control" %></td>
 		<td><%= text_field_tag :localidad, params[:localidad], :class => "form-control" %></td>
-		<td><%= text_field_tag :sede_provincial, params[:sede_provincial], :class => "form-control" %></td>
+		<td><%= text_field_tag :sede, params[:sede], :class => "form-control" %></td>
 		<td><%= select_tag :sigae, options_for_select([["", ""], ["☑", "true"], ["☐", "false"]], params[:sigae]), :class => "form-control" %></td>
 		<td><%= select_tag :legajo, options_for_select([["", ""], ["☑", "true"], ["☐", "false"]], params[:legajo]), :class => "form-control" %></td>
 		<td><%= text_field_tag :observacion, params[:observacion], :class => "form-control" %></td>
@@ -46,7 +46,7 @@
         <td><%= alumno.apellido %></td>
         <td><%= alumno.sexo %></td>
         <td><%= alumno.localidad.localidad %></td>
-        <td><%= alumno.sede_provincial.localidad if alumno.sede_provincial %></td>
+        <td><%= alumno.sede if alumno.sede_id %></td>
         <td><span class="btn" style="cursor: not-allowed; pointer-events: none"><span class='glyphicon <%= alumno.sigae ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></span></td>
 		<td>
 		  <!-- Button trigger modal -->		  

@@ -1,20 +1,20 @@
 module Validaciones
-  extend ActiveSupport::Concern
-  extend ActiveModel::Naming
-  include ActiveModel::Conversion
+  #extend ActiveSupport::Concern
+  #extend ActiveModel::Naming
+  #include ActiveModel::Conversion
 
-  def validate_dni
+  #def validate_dni
     
 	
-  end
+  #end
   
-  def validate_email
+  #def validate_email
   
 	
-  end
+  #end
   
-  def validate_seccion
+  #def validate_seccion
 
-  end
+  #end
  
 end
