@@ -12,7 +12,7 @@
       <th>Fecha acta</th>
       <th>Sección</th>
       <th>Estado</th>
-      <th>Calif.</th>
+      <th>Calificación</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,7 +23,7 @@
 		<td><%= text_field_tag :alumno, params[:alumno], :class => "form-control" %></td>
 		<td><%= select_tag :fecha_acta_condition, options_for_select(["=", ">", "<"], params[:fecha_acta_condition]), :class => "form-control" %><%= text_field_tag :fecha_acta, params[:fecha_acta], :class => "form-control" %></td>
 		<td><%= text_field_tag :seccion, params[:seccion], :class => "form-control" %></td>
-		<td><%= select_tag :estado, options_for_select(["", "Aprobado", "Regular", "Recursa", "Abandono"], params[:estado]), :class => "form-control" %></td>				
+		<td><%= select_tag :estado, options_for_select(["", "-", "Aprobado", "Regular", "Recursa", "Abandono"], params[:estado]), :class => "form-control" %></td>				
 		<td></td>
 		<td colspan="2"><%= check_box_tag :cada_ultimo_registro, "true", params[:cada_ultimo_registro] ? true : params[:cada_ultimo_registro], :class => "checkbox" %><small>Sólo últimos registros</small></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>

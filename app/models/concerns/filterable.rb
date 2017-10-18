@@ -34,6 +34,8 @@ module Filterable
 							obj = obj.where("extract(year from #{key}) #{condition} ?", year)
 							obj = obj.where("extract(month from #{key}) #{condition} ?", month)
 						end
+					elsif value == "-"	# asking for empty value
+						obj = obj.where("#{key} = '' OR #{key} IS NULL")
 					else
 						obj = obj.where(key + " ilike ?", value)
 					end
@@ -70,6 +72,8 @@ module Filterable
 		if ["true", "false"].include?(val)
 			val == "true" ? true : false
 		elsif key.match(/fecha/)
+			val
+		elsif val == "-"
 			val
 		else
 			"%#{val}%"
