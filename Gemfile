@@ -54,3 +54,4 @@ gem 'devise', '~> 4.2.0'
 
 # Use roo gem for reading Excel files
 gem 'roo'
+gem 'roo-xls'
