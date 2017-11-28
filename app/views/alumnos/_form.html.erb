@@ -98,7 +98,7 @@
   
   <div class="field">
     <%= f.label :observacion, "Observación" %>
-    <%= f.text_field :observacion %>
+    <%= f.select :observacion, options_for_select(["", "VER COMENTARIO", "CONVOCAR", "GESTIONAR PASE", "EEMPA", "FINES", "ABANDONO", "REF REG", "FALLECIO", "ERD"], alumno[:observacion]) %>
   </div>
   
   <div class="field">
