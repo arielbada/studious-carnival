@@ -17,8 +17,8 @@ module Filterable
 			if key != 'controller' && key != 'action' && val != "" && !key.match(/_condition$/) then
 				value = sanitizeValue(key, val)	#added boolean support
 				if validateParams(key) then
-					if value == true || value == false	# is boolean
-						if value == false
+					if value == !!value	# is boolean
+						if !value
 							obj = obj.where("#{key} = #{val} or #{key} IS NULL")
 						else
 							obj = obj.where("#{key} = #{val}")
@@ -57,10 +57,14 @@ module Filterable
 						end
 						query = query.chomp(" #{cond} ")
 						obj = obj.where(query)							
-					end
-					if key == "cada_ultimo_registro"							
-						obj = obj.group("alumno_id").having("fecha_acta = MAX(fecha_acta)")
-					end
+					end					
+					if key == "valor_de_acta"
+						if value == false
+							obj = obj.where("fecha_acta IS NULL")
+						elsif value == true
+							obj = obj.where("fecha_acta IS NOT NULL")
+						end						
+					end					
 				end
 			end
 		end
