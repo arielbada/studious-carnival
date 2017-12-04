@@ -27,15 +27,60 @@
   </div>
   
   <div class="field">
-    <%= f.label :telefono %>
+    <%= f.label :telefono, "Teléfono" %>
     <%= f.text_field :telefono %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
   </div>
   
   <div class="field">
     <%= f.label :nombre_contacto %>
     <%= f.text_field :nombre_contacto %>
   </div>
+  
+  <div class="field">
+    <%= f.label :telefono_contacto, "Teléfono contacto" %>
+    <%= f.text_field :telefono_contacto %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :email_contacto %>
+    <%= f.text_field :email_contacto %>
+  </div>
 
+  <div class="field">
+    <%= f.label :tipo_sede_presencial %>
+    <%= f.check_box :tipo_sede_presencial %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :tipo_sede_conectividad %>
+    <%= f.check_box :tipo_sede_conectividad %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :tipo_sede_consulta %>
+    <%= f.check_box :tipo_sede_consulta %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :tiene_pc, "Tiene PC" %>
+    <%= f.check_box :tiene_pc %>
+  </div>
+  
+    <div class="field">
+    <%= f.label :tiene_internet, "Tiene Internet" %>
+    <%= f.check_box :tiene_internet %>
+  </div>
+  
+    <div class="field">
+    <%= f.label :observaciones %>
+    <%= f.text_field :observaciones %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

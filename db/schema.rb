@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018170935) do
+ActiveRecord::Schema.define(version: 20171204011510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,11 +63,20 @@ ActiveRecord::Schema.define(version: 20171018170935) do
   create_table "sedes", force: :cascade do |t|
     t.string   "escuela"
     t.string   "direccion"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "telefono"
     t.string   "nombre_contacto"
     t.integer  "localidad_id"
+    t.string   "email"
+    t.string   "telefono_contacto"
+    t.string   "email_contacto"
+    t.boolean  "tipo_sede_conectividad"
+    t.boolean  "tipo_sede_presencial"
+    t.boolean  "tipo_sede_consulta"
+    t.boolean  "tiene_pc"
+    t.boolean  "tiene_internet"
+    t.string   "observaciones"
     t.index ["localidad_id"], name: "index_sedes_on_localidad_id", using: :btree
   end
 

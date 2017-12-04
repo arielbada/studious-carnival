@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <strong>Sede Provincial:</strong>
+  <strong>Localidad:</strong>
   <%= @sede.localidad.localidad %>
 </p>
 
@@ -21,8 +21,48 @@
 </p>
 
 <p>
+  <strong>Email:</strong>
+  <%= @sede.email %>
+</p>
+
+<p>
   <strong>Nombre Contacto:</strong>
   <%= @sede.nombre_contacto %>
+</p>
+
+<p>
+  <strong>Email Contacto:</strong>
+  <%= @sede.email_contacto %>
+</p>
+
+<p>
+  <strong>Es sede presencial:</strong>
+  <%= check_box_tag @sede.tipo_sede_presencial, @sede.tipo_sede_presencial, @sede.tipo_sede_presencial, {disabled: true} %>
+</p>
+
+<p>
+  <strong>Es sede de conectividad:</strong>
+  <%= check_box_tag @sede.tipo_sede_conectividad, @sede.tipo_sede_conectividad, @sede.tipo_sede_conectividad, {disabled: true} %>
+</p>
+
+<p>
+  <strong>Es sede de consulta:</strong>
+  <%= check_box_tag @sede.tipo_sede_consulta, @sede.tipo_sede_consulta, @sede.tipo_sede_consulta, {disabled: true} %>
+</p>
+
+<p>
+  <strong>Tiene PC:</strong>
+  <%= check_box_tag @sede.tiene_pc, @sede.tiene_pc, @sede.tiene_pc, {disabled: true} %>
+</p>
+
+<p>
+  <strong>Tiene Internet:</strong>
+  <%= check_box_tag @sede.tiene_internet, @sede.tiene_internet, @sede.tiene_internet, {disabled: true} %>
+</p>
+
+<p>
+  <strong>Observaciones:</strong>
+  <%= @sede.observaciones %>
 </p>
 
 <%= link_to 'Editar', edit_sede_path(@sede) %> |
