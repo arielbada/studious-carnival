@@ -23,7 +23,7 @@
   
   <div class="field">
     <%= f.label :localidad_id %>
-    <%= f.select :localidad_id, options_for_select(Localidad.all.map{ |l| [l.localidad, l.id] }, sede[:localidad_id]) %>
+    <%= f.select :localidad_id, options_for_select(Localidad.all.map{ |l| [l.localidad, l.id] }.sort, sede[:localidad_id]) %>
   </div>
   
   <div class="field">

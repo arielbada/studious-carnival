@@ -14,7 +14,9 @@
       <th>Estado</th>
       <th>Calificación</th>
 	  <th>Acta</th>
-      <th colspan="2"></th>
+      <th></th>
+	  <th></th>
+	  <th></th>
     </tr>
   </thead>
 
@@ -26,7 +28,9 @@
 		<td><%= text_field_tag :seccion, params[:seccion], :class => "form-control" %></td>
 		<td><%= select_tag :estado, options_for_select(["", "-", "Aprobado", "Regular", "Recursa", "Abandono"], params[:estado]), :class => "form-control" %></td>				
 		<td></td>
-		<td colspan="2"><%= select_tag :valor_de_acta, options_for_select([["", ""], ["☑", "true"], ["☐", "false"]], params[:valor_de_acta]), :class => "form-control" %></td>		
+		<td><%= select_tag :valor_de_acta, options_for_select([["", ""], ["☑", "true"], ["☐", "false"]], params[:valor_de_acta]), :class => "form-control" %></td>		
+		<td></td>
+		<td></td>		
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
 	</tr>
 <% end %>
@@ -39,6 +43,7 @@
         <td><%= seguimiento.seccion.seccion %></td>
         <td><%= seguimiento.estado %></td>
         <td><%= seguimiento.calificacion %></td>
+		<td><span class="btn" style="cursor: not-allowed; pointer-events: none"><span class='glyphicon <%= seguimiento.valor_de_acta ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></span></td>
         <td><%= link_to 'Mostrar', seguimiento, class: 'btn btn-xs' %></td>
         <td><%= link_to 'Editar', edit_seguimiento_path(seguimiento), class: 'btn btn-xs' %></td>
         <td><%= link_to 'Eliminar', seguimiento, method: :delete, data: { confirm: 'Está Seguro?' }, class: 'btn btn-xs' %></td>
