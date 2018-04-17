@@ -7,7 +7,7 @@ class AlumnosController < ApplicationController
 	@alumnos = Alumno.filter(params, @alumnos)
 	respond_to do |format|
 		format.html
-		format.xls { send_data @alumnos }
+		format.xlsx {send_data @alumnos} #not working, nos passing the filter to the excel generator
 	end
   end
 

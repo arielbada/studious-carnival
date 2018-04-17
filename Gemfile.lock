@@ -39,6 +39,13 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (8.0.0)
+    axlsx (2.1.0.pre)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.4.1)
+      rubyzip (~> 1.1.7)
+    axlsx_rails (0.5.1)
+      actionpack (>= 3.1)
+      axlsx (>= 2.0.1)
     bcrypt (3.1.11-x86-mingw32)
     bindex (0.5.0)
     builder (3.2.3)
@@ -62,6 +69,7 @@ GEM
     ffi (1.9.23-x86-mingw32)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    htmlentities (4.3.4)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -128,7 +136,7 @@ GEM
       roo (>= 2.0.0, < 3)
       spreadsheet (> 0.9.0)
     ruby-ole (1.2.12.1)
-    rubyzip (1.2.1)
+    rubyzip (1.1.7)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -176,6 +184,8 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  axlsx (= 2.1.0.pre)
+  axlsx_rails
   byebug
   coffee-rails (~> 4.2)
   devise (~> 4.4.3)
@@ -186,6 +196,7 @@ DEPENDENCIES
   rails (~> 5.1.6)
   roo
   roo-xls
+  rubyzip (= 1.1.7)
   sass-rails (~> 5.0)
   turbolinks (~> 5)
   tzinfo-data

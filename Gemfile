@@ -55,3 +55,8 @@ gem 'devise', '~> 4.4.3'
 # Use roo gem for reading Excel files
 gem 'roo'
 gem 'roo-xls'
+
+# Export data to spreadsheets
+gem 'rubyzip', '1.1.7'
+gem 'axlsx', '2.1.0.pre'
+gem 'axlsx_rails'

@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+styles = xlsx_package.workbook.styles
+header_style = styles.add_style bg_color: "1133AA", fg_color: "FF", bold: true, alignment: { horizontal: :center }
+								
+wb.add_worksheet(name: "Alumnos") do |sheet|  
+  sheet.add_row ['DNI', 'Nombre', 'Apellido', 'Sexo', 'Localidad.Localidad', 'Domicilio', 'Telefono Fijo', 'Telefono Celular', 'Correo', 'Fecha Nacimiento', 'SIGAE', 'Inscripcion Certificado', 'Inscripcion Foto', 'Inscripcion Partida', 'Inscripcion Ficha', 'Comentario Inscripcion', 'Observacion (Glosario)', 'Comentario', 'Sede_Provincial.Localidad', ""], style: header_style
+  @alumnos.each do |alumno|
+  sede_escuela = alumno.sede.escuela rescue ""
+  sede_localidad = alumno.sede.localidad.localidad rescue ""
+    sheet.add_row [alumno.dni, alumno.nombre, alumno.apellido, alumno.sexo, alumno.localidad.localidad, alumno.domicilio, alumno.telefono_fijo,	alumno.telefono_celular, alumno.correo, alumno.fecha_nacimiento, alumno.sigae, alumno.inscripcion_certificado, alumno.inscripcion_foto, alumno.inscripcion_partida, alumno.inscripcion_ficha, alumno.comentario_inscripcion, alumno.observacion, sede_localidad, sede_escuela]
+  end
+end
