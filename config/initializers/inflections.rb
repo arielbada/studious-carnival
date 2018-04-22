@@ -18,4 +18,5 @@
 ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'localidad', 'localidades'
 	inflect.irregular 'seccion', 'secciones'
+	inflect.irregular 'observacion', 'observaciones'
 end

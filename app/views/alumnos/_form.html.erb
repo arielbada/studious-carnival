@@ -97,8 +97,13 @@
   </div>
   
   <div class="field">
-    <%= f.label :observacion, "Observación" %>
-    <%= f.select :observacion, options_for_select(["", "VER COMENTARIO", "CONVOCAR", "GESTIONAR PASE", "EEMPA", "FINES", "ABANDONO", "REF REG", "FALLECIO", "ERD"], alumno[:observacion]) %>
+    <%= f.label :alumno_observacion_ids, "Observación" %>
+	<%= f.collection_check_boxes :alumno_observacion_ids, AlumnoObservacion.order(:observacion), :id, :observacion , checked: alumno.alumno_observacion_ids do |b| %>
+      <div class="collection-check-box">
+		<%= b.label %>
+        <%= b.check_box %>        
+      </div>  
+	<% end %>
   </div>
   
   <div class="field">

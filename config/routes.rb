@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :alumnos
   resources :alumno_imports
+  resources :alumno_observaciones
   resources :seguimiento_imports
   resources :localidades
   resources :sedes

@@ -14,8 +14,8 @@ module Filterable
     #@projects = Project.parseParams(params,@projects)
     def filter(p, obj)
       p.each do |key, val|
-        if key != 'controller' && key != 'action' && val != "" && !key.match(/_condition$/) then
-          value = sanitizeValue(key, val)	#added boolean support
+        if key != 'controller' && key != 'action' && val != "" && !key.match(/_condition$/) then		
+          value = sanitizeValue(key, val)	#added boolean support		  
           if validateParams(key) then
             if value == !!value	# is boolean
               if !value
@@ -33,7 +33,7 @@ module Filterable
                 year, month = value.sub(/(\d{4})(?:\-|\/)(\d{2})/, '\1'), value.sub(/(\d{4})(?:\-|\/)(\d{2})/, '\2')
                 obj = obj.where("extract(year from #{key}) #{condition} ?", year)
                 obj = obj.where("extract(month from #{key}) #{condition} ?", month)
-              end
+              end			
             elsif value == "-"	# asking for empty value
               obj = obj.where("#{key} = '' OR #{key} IS NULL")
             else
@@ -68,6 +68,9 @@ module Filterable
             if key == "dni"
               obj = obj.includes("alumno").where(key + " ilike ?", value).references("alumno")	
             end
+      			if key == "alumno_observacion"	#searchs for alumnos observaciones        
+              obj = obj.includes(key).where(["alumno_observacion_id = ?", val]).references(key)
+            end
           end
         end
       end
@@ -98,7 +101,7 @@ module Filterable
     end
 
     def validateParamsSub(pname)
-      i = false
+      i = false	  
       self.columns.each do |column|
         if pname+"_id" == column.name then
           i = true

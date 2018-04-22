@@ -16,7 +16,7 @@
       <th>Sede</th>	  
       <th>SIGAE</th>
       <th>Legajo</th>
-      <th>Observación</th>
+      <th>Observaciones</th>
       <th>Comentario</th>	  
       <th colspan="3"></th>
     </tr>
@@ -30,9 +30,9 @@
 		<td><%= select_tag :sexo, options_for_select([["", ""], ["M", "M"], ["F", "F"]], params[:sexo]), :class => "form-control" %></td>
 		<td><%= text_field_tag :localidad, params[:localidad], :class => "form-control" %></td>
 		<td><%= text_field_tag :sede, params[:sede], :class => "form-control" %></td>
-		<td><%= select_tag :sigae, options_for_select([["", ""], ["☑", "true"], ["☐", "false"]], params[:sigae]), :class => "form-control" %></td>
+		<td><%= select_tag :sigae, options_for_select([["", ""], ["☑", "true"], ["☐", "false"]], params[:sigae]), :class => "form-control" %></td> 
 		<td><%= select_tag :legajo, options_for_select([["", ""], ["☑", "true"], ["☐", "false"]], params[:legajo]), :class => "form-control" %></td>
-		<td><%= text_field_tag :observacion, params[:observacion], :class => "form-control" %></td>
+		<td><%= select_tag :alumno_observacion, options_for_select(AlumnoObservacion.all.map{ |v| [v.observacion, v.id] }.sort, params[:alumno_observacion]), :include_blank => true, :class => "form-control" %></td>
 		<td><%= text_field_tag :comentario, params[:comentario], :class => "form-control" %></td>
 		<td colspan="2"></td>
 		<td><%= submit_tag("Buscar", :name => nil, :class => "form-control") %></td>
@@ -65,7 +65,7 @@
 							<tr><td>Fotocopia DNI</td><td><span class='glyphicon <%= alumno.inscripcion_foto ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></td></tr>
 							<tr><td>Partida</td><td><span class='glyphicon <%= alumno.inscripcion_partida ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></td></tr>
 							<tr><td>Certificado</td><td><span class='glyphicon <%= alumno.inscripcion_certificado ? "glyphicon-check" : "glyphicon-unchecked"  %>'/></td></tr>
-							<tr><td>Comentario</td><td><span class=''><%= alumno.comentario_inscripcion %></span></td></tr>			
+							<tr><td>Comentario</td><td><span class=''><%= alumno.comentario_inscripcion %></span></td></tr>
 						</table>
 					</div>
 					<div class="modal-footer">
@@ -73,11 +73,11 @@
 				</div>
 			</div>
 		</td>
-		<td><%= alumno.observacion %></td>
+		<td><%= alumno.observaciones %></td>
 		<td><%= alumno.comentario %></td>
         <td><%= link_to 'Mostrar', alumno, class: 'btn btn-xs' %></td>
         <td><%= link_to 'Editar', edit_alumno_path(alumno), class: 'btn btn-xs' %></td>
-        <td><%= link_to 'Eliminar', alumno, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Eliminar', alumno, method: :delete, data: { confirm: '¿Está seguro?' }, class: 'btn btn-xs' %></td>
       </tr>
     <% end if @alumnos.count != Alumno.all.count %>
 

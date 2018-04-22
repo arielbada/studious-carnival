@@ -1,29 +1,37 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="container">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Paraná Virtual</a>
+			<%= link_to 'Paraná Virtual', root_path, :class => 'navbar-brand' %>
 		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">				
+			<ul class="nav navbar-nav">
 				<li><%= nav_link 'Estudiantes', alumnos_path %></li>
-				<li><%= nav_link 'Seguimiento', seguimientos_path %></li>
-				<li><%= nav_link 'Sedes Territoriales', sedes_path %></li>
-				<li><%= nav_link 'Localidades', localidades_path %></li>
-				<li><%= nav_link 'Secciones', secciones_path %></li>
-			</ul>
+				<li><%= nav_link 'Seguimiento', seguimientos_path %></li>	
+				<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Referencias <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= nav_link 'Sedes Territoriales', sedes_path %></li>
+            <li><%= nav_link 'Localidades', localidades_path %></li>
+            <li><%= nav_link 'Secciones', secciones_path %></li>
+          </ul>
+        </li>				
+			</ul>			
 			<ul class="nav navbar-nav pull-right">
 				<% if user_signed_in? %>					
 					<li><%= link_to(current_user.email, edit_user_registration_path) %></li>
 					<li class='active'><%= link_to('Cerrar sesión', destroy_user_session_path, :method => :delete) %></li>					
 				<% else %>
 					<li class='active'><%= link_to('Iniciar sesión', new_user_session_path)  %></li>
-					<li><%= link_to('Register', new_user_registration_path)  %></li>
+					<li><%= link_to('Registrarse', new_user_registration_path)  %></li>
 				<% end %>
 			</ul>
 		</div>		

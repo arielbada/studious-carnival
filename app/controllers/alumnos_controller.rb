@@ -3,12 +3,12 @@ class AlumnosController < ApplicationController
 
   def index
     @alumnos = Alumno.all
-	#@alumnos = Alumno.filter(params.slice(:nombre, :apellido))
-	@alumnos = Alumno.filter(params, @alumnos)
-	respond_to do |format|
-		format.html
-		format.xlsx #{send_data @alumnos} #not working, nos passing the filter to the excel generator
-	end
+	  #@alumnos = Alumno.filter(params.slice(:nombre, :apellido))
+	  @alumnos = Alumno.filter(params, @alumnos)
+	  respond_to do |format|
+		  format.html
+		  format.xlsx #{send_data @alumnos} #not working, nos passing the filter to the excel generator
+	  end
   end
 
   # GET /alumnos/1
@@ -73,6 +73,6 @@ class AlumnosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alumno_params
-      params.require(:alumno).permit(:dni, :nombre, :apellido, :localidad_id, :domicilio, :telefono_fijo, :telefono_celular, :correo, :fecha_nacimiento, :inscripcion_certificado, :inscripcion_foto, :inscripcion_partida, :inscripcion_ficha, :sigae, :comentario, :comentario_inscripcion, :sexo, :observacion, :sede_id)
+      params.require(:alumno).permit(:dni, :nombre, :apellido, :localidad_id, :domicilio, :telefono_fijo, :telefono_celular, :correo, :fecha_nacimiento, :inscripcion_certificado, :inscripcion_foto, :inscripcion_partida, :inscripcion_ficha, :sigae, :comentario, :comentario_inscripcion, :sexo, :sede_id, :alumno_observacion_ids => [])
     end	
 end

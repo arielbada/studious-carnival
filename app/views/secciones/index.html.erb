@@ -7,9 +7,9 @@
   <thead>
     <tr>
       <th>Sección</th>
-	  <th>Fecha Inicio</th>
-	  <th>Fecha Finalización</th>
-	  <th>ID Plataforma</th>
+	    <th>Fecha Inicio</th>
+	    <th>Fecha Finalización</th>
+	    <th>ID Plataforma</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -31,7 +31,7 @@
         <td><%= seccion.fecha_finalizacion %></td>
 		<td><%= seccion.id_plataforma %></td>
         <td><%= link_to 'Editar', edit_seccion_path(seccion), class: 'btn btn-xs' %></td>
-        <td><%= link_to 'Eliminar', seccion, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-xs' %></td>
+        <td><%= link_to 'Eliminar', seccion, method: :delete, data: { confirm: '¿Está seguro?'}, class: 'btn btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
