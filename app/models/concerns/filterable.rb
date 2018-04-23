@@ -36,6 +36,8 @@ module Filterable
               end			
             elsif value == "-"	# asking for empty value
               obj = obj.where("#{key} = '' OR #{key} IS NULL")
+            elsif value == "*"  # asking for non empty value
+              obj = obj.where("#{key} <> '' AND #{key} IS NOT NULL")
             else
               obj = obj.where(key + " ilike ?", value)
             end
@@ -83,7 +85,7 @@ module Filterable
         val == "true" ? true : false
       elsif key.match(/fecha/)
         val
-      elsif val == "-"
+      elsif val == "-" or val == "*"
         val
       else
         "%#{val}%"
